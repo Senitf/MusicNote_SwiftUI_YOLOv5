@@ -15,6 +15,7 @@
 		A221910724D97D78003AAD82 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = A221910624D97D78003AAD82 /* Assets.xcassets */; };
 		A221910A24D97D78003AAD82 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = A221910824D97D78003AAD82 /* LaunchScreen.storyboard */; };
 		A221911224D97E41003AAD82 /* Type1.swift in Sources */ = {isa = PBXBuildFile; fileRef = A221911124D97E41003AAD82 /* Type1.swift */; };
+		A2ADD52124DA59CB00B228AC /* NewsDetailController.swift in Sources */ = {isa = PBXBuildFile; fileRef = A2ADD52024DA59CB00B228AC /* NewsDetailController.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -28,6 +29,7 @@
 		A221910924D97D78003AAD82 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
 		A221910B24D97D78003AAD82 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		A221911124D97E41003AAD82 /* Type1.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Type1.swift; sourceTree = "<group>"; };
+		A2ADD52024DA59CB00B228AC /* NewsDetailController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NewsDetailController.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -69,6 +71,7 @@
 				A221910B24D97D78003AAD82 /* Info.plist */,
 				A221910324D97D77003AAD82 /* Study_1_NewsApp.xcdatamodeld */,
 				A221911124D97E41003AAD82 /* Type1.swift */,
+				A2ADD52024DA59CB00B228AC /* NewsDetailController.swift */,
 			);
 			path = Study_1_NewsApp;
 			sourceTree = "<group>";
@@ -147,6 +150,7 @@
 				A22190FF24D97D77003AAD82 /* ViewController.swift in Sources */,
 				A22190FB24D97D77003AAD82 /* AppDelegate.swift in Sources */,
 				A221910524D97D77003AAD82 /* Study_1_NewsApp.xcdatamodeld in Sources */,
+				A2ADD52124DA59CB00B228AC /* NewsDetailController.swift in Sources */,
 				A22190FD24D97D77003AAD82 /* SceneDelegate.swift in Sources */,
 				A221911224D97E41003AAD82 /* Type1.swift in Sources */,
 			);
