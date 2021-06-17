@@ -13,6 +13,8 @@
 		A2D9E436267B25C1009F95F2 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = A2D9E434267B25C1009F95F2 /* Main.storyboard */; };
 		A2D9E438267B25C2009F95F2 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = A2D9E437267B25C2009F95F2 /* Assets.xcassets */; };
 		A2D9E43B267B25C2009F95F2 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = A2D9E439267B25C2009F95F2 /* LaunchScreen.storyboard */; };
+		A2D9E444267B5912009F95F2 /* quarter.png in Resources */ = {isa = PBXBuildFile; fileRef = A2D9E442267B5911009F95F2 /* quarter.png */; };
+		A2D9E445267B5912009F95F2 /* half.png in Resources */ = {isa = PBXBuildFile; fileRef = A2D9E443267B5911009F95F2 /* half.png */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -24,6 +26,8 @@
 		A2D9E437267B25C2009F95F2 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		A2D9E43A267B25C2009F95F2 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
 		A2D9E43C267B25C2009F95F2 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		A2D9E442267B5911009F95F2 /* quarter.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = quarter.png; sourceTree = "<group>"; };
+		A2D9E443267B5911009F95F2 /* half.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = half.png; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -56,6 +60,8 @@
 		A2D9E42D267B25C1009F95F2 /* MusicPen */ = {
 			isa = PBXGroup;
 			children = (
+				A2D9E443267B5911009F95F2 /* half.png */,
+				A2D9E442267B5911009F95F2 /* quarter.png */,
 				A2D9E42E267B25C1009F95F2 /* AppDelegate.swift */,
 				A2D9E430267B25C1009F95F2 /* SceneDelegate.swift */,
 				A2D9E432267B25C1009F95F2 /* ViewController.swift */,
@@ -125,7 +131,9 @@
 			buildActionMask = 2147483647;
 			files = (
 				A2D9E43B267B25C2009F95F2 /* LaunchScreen.storyboard in Resources */,
+				A2D9E445267B5912009F95F2 /* half.png in Resources */,
 				A2D9E438267B25C2009F95F2 /* Assets.xcassets in Resources */,
+				A2D9E444267B5912009F95F2 /* quarter.png in Resources */,
 				A2D9E436267B25C1009F95F2 /* Main.storyboard in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -296,7 +304,7 @@
 				PRODUCT_BUNDLE_IDENTIFIER = KMH.MusicPen;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SWIFT_VERSION = 5.0;
-				TARGETED_DEVICE_FAMILY = "1,2";
+				TARGETED_DEVICE_FAMILY = 2;
 			};
 			name = Debug;
 		};
@@ -315,7 +323,7 @@
 				PRODUCT_BUNDLE_IDENTIFIER = KMH.MusicPen;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SWIFT_VERSION = 5.0;
-				TARGETED_DEVICE_FAMILY = "1,2";
+				TARGETED_DEVICE_FAMILY = 2;
 			};
 			name = Release;
 		};
