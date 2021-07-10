@@ -6,48 +6,35 @@
 //
 
 import UIKit
+import PencilKit
 
-class ViewController: UIViewController {
+class ViewController: UIViewController, PKCanvasViewDelegate, PKToolPickerObserver{
     
-    var isZoom = false
-    var imgOn: UIImage?
-    var imgOff: UIImage?
+    @IBOutlet var pencilFingerButton: UIBarButtonItem!
+    @IBOutlet var canvasView: PKCanvasView!
     
-    @IBOutlet var imgView: UIImageView!
-    @IBOutlet var btnResize: UIButton!
+    let canvasWidth: CGFloat = 768
+    let canvasOverscrollHight: CGFloat = 500
+    
+    var drawing = PKDrawing()
     
     override func viewDidLoad() {
         super.viewDidLoad()
-        // Do any additional setup after loading the view.
-        imgOn = UIImage(named: "half.png")
-        imgOff = UIImage(named: "quarter.png")
+        canvasView.delegate = self
+        canvasView.drawing = drawing
         
-        imgView.image = imgOn
+        canvasView.alwaysBounceVertical = true
+        canvasView.allowsFingerDrawing = true
+        
+        if let window = parent?.view.window, let toolPicker = PKToolPicker.shared(for: window){
+            toolPicker.setVisible(true, forFirstResponder: canvasView)
+            toolPicker.addObserver(canvasView)
+            
+            canvasView.becomeFirstResponder()
+        }
+        
     }
     
-    @IBAction func btnResizeImage(_ sender: UIButton) {
-        let scale:CGFloat = 2.0
-        var newWidth:CGFloat, newHeight:CGFloat
-        if(isZoom){
-            newWidth = imgView.frame.width/scale
-            newHeight = imgView.frame.height/scale
-            btnResize.setTitle("확대", for: .normal)
-        }
-        else{
-            newWidth = imgView.frame.width * scale
-            newHeight = imgView.frame.height * scale
-            btnResize.setTitle("축소", for: .normal)
-        }
-        isZoom = !isZoom
+    @IBAction func saveDrawingToCameraRoll(_ sender: Any) {
     }
-    @IBAction func switchImageOnOff(_ sender: UISwitch) {
-        if sender.isOn{
-            imgView.image = imgOn
-        }
-        else{
-            imgView.image = imgOff
-        }
-    }
-    
 }
-
