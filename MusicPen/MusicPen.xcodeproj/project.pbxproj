@@ -13,6 +13,7 @@
 		A250C32126A70499009185C2 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = A250C32026A70499009185C2 /* Assets.xcassets */; };
 		A250C32426A70499009185C2 /* Preview Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = A250C32326A70499009185C2 /* Preview Assets.xcassets */; };
 		A250C32726A70499009185C2 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = A250C32526A70499009185C2 /* LaunchScreen.storyboard */; };
+		A2DE368426A851AB00B1B41C /* ListView.swift in Sources */ = {isa = PBXBuildFile; fileRef = A2DE368326A851AB00B1B41C /* ListView.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -24,6 +25,7 @@
 		A250C32326A70499009185C2 /* Preview Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = "Preview Assets.xcassets"; sourceTree = "<group>"; };
 		A250C32626A70499009185C2 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
 		A250C32826A70499009185C2 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		A2DE368326A851AB00B1B41C /* ListView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ListView.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -59,6 +61,7 @@
 				A250C31A26A70498009185C2 /* AppDelegate.swift */,
 				A250C31C26A70498009185C2 /* SceneDelegate.swift */,
 				A250C31E26A70498009185C2 /* ContentView.swift */,
+				A2DE368326A851AB00B1B41C /* ListView.swift */,
 				A250C32026A70499009185C2 /* Assets.xcassets */,
 				A250C32526A70499009185C2 /* LaunchScreen.storyboard */,
 				A250C32826A70499009185C2 /* Info.plist */,
@@ -145,6 +148,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				A2DE368426A851AB00B1B41C /* ListView.swift in Sources */,
 				A250C31B26A70498009185C2 /* AppDelegate.swift in Sources */,
 				A250C31D26A70498009185C2 /* SceneDelegate.swift in Sources */,
 				A250C31F26A70498009185C2 /* ContentView.swift in Sources */,
@@ -298,7 +302,7 @@
 				PRODUCT_BUNDLE_IDENTIFIER = KMH.MusicPen;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SWIFT_VERSION = 5.0;
-				TARGETED_DEVICE_FAMILY = "1,2";
+				TARGETED_DEVICE_FAMILY = 2;
 			};
 			name = Debug;
 		};
@@ -319,7 +323,7 @@
 				PRODUCT_BUNDLE_IDENTIFIER = KMH.MusicPen;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SWIFT_VERSION = 5.0;
-				TARGETED_DEVICE_FAMILY = "1,2";
+				TARGETED_DEVICE_FAMILY = 2;
 			};
 			name = Release;
 		};
