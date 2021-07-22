@@ -4,7 +4,10 @@
 `CNN` 과 `SwiftUI` 을 이용한 필기 인식 기반 악보 작성 앱으로, 2021년 홍익대학교 졸업 프로젝트를 목적으로 개발되었습니다
 
 ## 개발 환경
-Mac OSX Big Sur / 2.3 GHz 8코어 Intel Core i9 / 6GB 2400 MHz DDR4 / Radeon Pro 560X 4 GB
+- Mac OSX Big Sur
+- 2.3 GHz 8코어 Intel Core i9
+- 16GB 2400 MHz DDR4
+- Radeon Pro 560X 4 GB
 
 ## 개발 언어 및 플랫폼
 - SwiftUI
