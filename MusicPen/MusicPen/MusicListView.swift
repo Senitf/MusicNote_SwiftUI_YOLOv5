@@ -11,9 +11,17 @@ struct MusicListView: View {
     
     @State var ShowNewMusic: Bool = false
     @State var MusicTitle: String = ""
+    @State var MusicBar: Int = 0
+    
+    @State var action:Int? = nil
     var body: some View {
         NavigationView{
             ZStack{
+                NavigationLink(
+                    destination: MusicEditView(MusicTitle: $MusicTitle, MusicBar: $MusicBar),
+                    tag: 1,
+                    selection: $action)
+                    {EmptyView()}
                 NavigationBar(ShowNewMusic: $ShowNewMusic)
                 VStack{
                     MusicList()
@@ -23,12 +31,25 @@ struct MusicListView: View {
                             Color.white
                             VStack {
                                 Text("Create New Music")
-                                Spacer()
                                 HStack{
                                     Text("Title")
-                                    TextField("Title", text: $MusicTitle)
+                                    TextField("Input Your Music Title", text: $MusicTitle)
+                                        .padding()
+                                        .overlay(
+                                            Rectangle()
+                                            .frame(height: 1)
+                                            .foregroundColor(.black),
+                                            alignment: .bottom
+                                        )
                                 }
-                                Spacer()
+                                HStack{
+                                    Text("How Many bars?")
+                                    Picker(selection: $MusicBar, label: Text("Choose your bars"), content: {
+                                        ForEach(0..<21){
+                                            v in Text(String(format: "%02d", v))
+                                        }
+                                    })
+                                }
                                 HStack{
                                     Spacer()
                                     Button(action: {
@@ -39,6 +60,7 @@ struct MusicListView: View {
                                     Spacer()
                                     Button(action: {
                                         self.ShowNewMusic = false
+                                        self.action = 1
                                     }, label: {
                                         Text("Create")
                                     })
@@ -46,7 +68,7 @@ struct MusicListView: View {
                                 }
                             }.padding()
                         }
-                        .frame(width: 300, height: 200)
+                        .frame(width: 500, height: 400)
                         .cornerRadius(20).shadow(radius: 20)
                 }
             }.padding()
@@ -64,20 +86,22 @@ struct NavigationBar: View {
     @Binding var ShowNewMusic: Bool
     var body: some View {
         Text("Navi Items")
-            .navigationBarBackButtonHidden(true)
             .navigationTitle("MusicListView")
-            .navigationBarItems(leading:
-                                    Button(action: {
-                                        print("Button pressed")
-                                    }) {
-                                        Image(systemName: "plus.square.fill.on.square.fill").imageScale(.medium)
-                                    },
-                                trailing:
-                                    Button(action: {
-                                        print("Button pressed")
-                                        ShowNewMusic = true
-                                    }) {
-                                        Text("New")
+            .navigationBarTitleDisplayMode(.inline)
+            .navigationBarItems(trailing:
+                                    HStack{
+                                        Button(action: {
+                                            print("Button pressed")
+                                        }) {
+                                            Image(systemName: "plus.square.fill.on.square.fill")
+                                                .imageScale(.medium)
+                                        }
+                                        Button(action: {
+                                            print("Button pressed")
+                                            ShowNewMusic = true
+                                        }) {
+                                            Text("New")
+                                        }
                                     }
             )
     }

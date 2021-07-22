@@ -8,7 +8,7 @@
 import SwiftUI
 
 let lightGreyColor = Color(red: 239.0/255.0, green: 243.0/255.0, blue: 244.0/255.0, opacity: 1.0)
-let storedUsername = "seni"
+let storedUsername = "Seni"
 let storedPassword = "qwe123"
 
 struct LoginView : View {
@@ -18,6 +18,7 @@ struct LoginView : View {
     @State var authenticationDidSucceed: Bool = false
     
     @State var action:Int? = nil
+    
     var body: some View {
         NavigationView{
             ZStack{
@@ -25,6 +26,9 @@ struct LoginView : View {
                     destination: MusicListView().navigationBarBackButtonHidden(true),
                     tag: 1,
                     selection: $action) {EmptyView()}
+                Text("Navi bar")
+                    .navigationBarTitle("")
+                    .navigationBarHidden(true)
                 VStack{
                     WelcomeText()
                     UserImage()
