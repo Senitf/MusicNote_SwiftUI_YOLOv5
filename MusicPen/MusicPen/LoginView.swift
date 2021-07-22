@@ -16,42 +16,52 @@ struct LoginView : View {
     @State var password: String = ""
     @State var authenticationDidFail: Bool = false
     @State var authenticationDidSucceed: Bool = false
+    
+    @State var action:Int? = nil
     var body: some View {
-        ZStack{
-            VStack{
-                WelcomeText()
-                UserImage()
-                UsernameTextField(username: $username)
-                PasswordSecureField(password: $password)
-                if authenticationDidFail {
-                    Text("Information not correct. Try again.")
-                        .offset(y: -10)
-                        .foregroundColor(.red)
-                }
-                Button(action: {
-                    print("Button tapped")
-                    if self.username == storedUsername && self.password == storedPassword {
-                        self.authenticationDidSucceed = true
-                        self.authenticationDidFail = false
+        NavigationView{
+            ZStack{
+                NavigationLink(
+                    destination: MusicListView().navigationBarBackButtonHidden(true),
+                    tag: 1,
+                    selection: $action) {EmptyView()}
+                VStack{
+                    WelcomeText()
+                    UserImage()
+                    UsernameTextField(username: $username)
+                    PasswordSecureField(password: $password)
+                    if authenticationDidFail {
+                        Text("Information not correct. Try again.")
+                            .offset(y: -10)
+                            .foregroundColor(.red)
                     }
-                    else {
-                        self.authenticationDidFail = true
+                    Button(action: {
+                        print("Button tapped")
+                        if self.username == storedUsername && self.password == storedPassword {
+                            self.authenticationDidSucceed = true
+                            self.authenticationDidFail = false
+                            self.action = 1
+                        }
+                        else {
+                            self.authenticationDidFail = true
+                        }
+                    }){
+                        LoginButtonContent()
                     }
-                }){
-                    LoginButtonContent()
                 }
-            }
-            .padding()
-            if authenticationDidSucceed {
-                Text("Login succeeded!")
-                    .font(.headline)
-                    .frame(width: 250, height: 80)
-                    .background(Color.green)
-                    .cornerRadius(20.0)
-                    .foregroundColor(.white)
-                    .animation(Animation.default)
+                .padding()
+                if authenticationDidSucceed {
+                    Text("Login succeeded!")
+                        .font(.headline)
+                        .frame(width: 250, height: 80)
+                        .background(Color.green)
+                        .cornerRadius(20.0)
+                        .foregroundColor(.white)
+                        .animation(Animation.default)
+                }
             }
         }
+        .navigationViewStyle(StackNavigationViewStyle())
     }
 }
 
