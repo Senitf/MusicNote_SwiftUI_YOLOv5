@@ -16,12 +16,30 @@ struct MusicEditView: View {
     
     @Environment(\.undoManager) private var undoManage
     
-    @State private var canvasView = PKCanvasView()
+    @State private var canvasView = PKCanvasView(frame: .init(x:0, y:0, width:400.0, height: 100.0))
+    
+    let imgRect = CGRect(x:0, y:0, width:400.0, height:100.0)
+    
+    let today = Date()
+    var dateFormatter: DateFormatter {
+    let formatter = DateFormatter()
+    formatter.dateStyle = .long
+    return formatter
+    }
     
     var body: some View {
             ZStack{
                 VStack{
                     MyCanvas(canvasView: $canvasView)
+                        .frame(width: 400.0, height: 100.0, alignment: .leading)
+                        .border(Color.gray, width:5)
+                    Button(action:
+                    {
+                        self.saveSignature()
+                    })
+                    {
+                        Text("Save Signature")
+                    }
                 }
                 .toolbar {
                     ToolbarItem(placement: .primaryAction) {
@@ -45,6 +63,21 @@ struct MusicEditView: View {
                 }
             }
     }
+    
+    func getDocumentsDirectory() -> URL {
+        let paths = FileManager.default.urls(for: .documentDirectory, in: .userDomainMask)
+        let documentsDirectory = paths[0]
+        return documentsDirectory
+    }
+    
+    func saveSignature(){
+        let image = canvasView.drawing.image(from: imgRect, scale: 1.0)
+        if let data = image.pngData() {
+            let filename = getDocumentsDirectory().appendingPathComponent("\(self.dateFormatter.string(from: self.today)).png")
+            try? data.write(to: filename)
+            print(filename)
+        }
+    }
 }
 
 struct MusicEditView_Previews: PreviewProvider {
@@ -62,5 +95,5 @@ struct MyCanvas: UIViewRepresentable {
         return canvasView
     }
 
-    func updateUIView(_ canvasView: PKCanvasView, context: Context) { }
+    func updateUIView(_ canvasView: PKCanvasView, context: Context) {}
 }

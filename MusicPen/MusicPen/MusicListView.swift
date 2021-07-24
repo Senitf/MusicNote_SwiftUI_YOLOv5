@@ -72,7 +72,9 @@ struct MusicListView: View {
                         .cornerRadius(20).shadow(radius: 20)
                 }
             }.padding()
-        }.navigationViewStyle(StackNavigationViewStyle())
+        }
+        .navigationViewStyle(StackNavigationViewStyle())
+        .navigationBarHidden(true)
     }
 }
 

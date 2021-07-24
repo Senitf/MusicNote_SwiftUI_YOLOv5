@@ -23,12 +23,9 @@ struct LoginView : View {
         NavigationView{
             ZStack{
                 NavigationLink(
-                    destination: MusicListView().navigationBarBackButtonHidden(true),
+                    destination: MusicListView(),
                     tag: 1,
                     selection: $action) {EmptyView()}
-                Text("Navi bar")
-                    .navigationBarTitle("")
-                    .navigationBarHidden(true)
                 VStack{
                     WelcomeText()
                     UserImage()
