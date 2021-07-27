@@ -41,6 +41,12 @@ struct MusicEditView: View {
                         Text("Save Signature")
                     }
                 }
+                .gesture(
+                    DragGesture()
+                        .onEnded{ _ in
+                            print("End")
+                        }
+                )
                 .toolbar {
                     ToolbarItem(placement: .primaryAction) {
                         Button("Clear") {
@@ -88,10 +94,13 @@ struct MusicEditView_Previews: PreviewProvider {
 
 struct MyCanvas: UIViewRepresentable {
     @Binding var canvasView: PKCanvasView
-
+    
     func makeUIView(context: Context) -> PKCanvasView {
+        let gesture = UITapGestureRecognizer(target: context.coordinator,
+                                                     action: #selector(Coordinator.tapped))
         canvasView.drawingPolicy = .anyInput
         canvasView.tool = PKInkingTool(.pen, color: .black, width: 15)
+        canvasView.addGestureRecognizer(gesture)
         return canvasView
     }
 
