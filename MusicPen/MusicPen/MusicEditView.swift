@@ -33,6 +33,15 @@ struct MusicEditView: View {
                     MyCanvas(canvasView: $canvasView)
                         .frame(width: 400.0, height: 100.0, alignment: .leading)
                         .border(Color.gray, width:5)
+                        .gesture(
+                            DragGesture(minimumDistance: 0.1)
+                                .onChanged{ _ in
+                                    print("OH")
+                                }
+                                .onEnded{ _ in
+                                    print("Hi")
+                                }
+                        )
                     Button(action:
                     {
                         self.saveSignature()
@@ -96,13 +105,17 @@ struct MyCanvas: UIViewRepresentable {
     @Binding var canvasView: PKCanvasView
     
     func makeUIView(context: Context) -> PKCanvasView {
-        let gesture = UITapGestureRecognizer(target: context.coordinator,
-                                                     action: #selector(Coordinator.tapped))
         canvasView.drawingPolicy = .anyInput
         canvasView.tool = PKInkingTool(.pen, color: .black, width: 15)
-        canvasView.addGestureRecognizer(gesture)
+        canvasView.ge
+        
         return canvasView
     }
-
-    func updateUIView(_ canvasView: PKCanvasView, context: Context) {}
+    
+    func updateUIView(_ canvasView: PKCanvasView, context: Context) {
+        if !canvasView.drawing.strokes.isEmpty {
+             // set color whichever needed
+             print("Hello")  // << here !!
+        }
+    }
 }
