@@ -50,6 +50,7 @@ struct MusicEditView: View {
                         }
                         */
                         Button("Save to image"){
+                            print("Save button tapped")
                             let image = myCanvasView.snapshot()
                             
                             UIImageWriteToSavedPhotosAlbum(image, nil, nil, nil)
@@ -213,4 +214,20 @@ extension View{
                 view?.drawHierarchy(in: controller.view.bounds, afterScreenUpdates: true)
             }
         }
+}
+
+extension UIView{
+    func takeScreenshot() -> UIImage {
+             // Begin context
+          UIGraphicsBeginImageContextWithOptions(self.bounds.size, false, UIScreen.main.scale)
+             // Draw view in that context
+             drawHierarchy(in: self.bounds, afterScreenUpdates: true)
+             // And finally, get image
+         let image = UIGraphicsGetImageFromCurrentImageContext()
+             UIGraphicsEndImageContext()
+             if (image != nil) {
+                 return image!
+             }
+             return UIImage()
+    }
 }

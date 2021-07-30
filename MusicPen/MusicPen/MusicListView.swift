@@ -54,6 +54,7 @@ struct MusicListView: View {
                                     Spacer()
                                     Button(action: {
                                         self.ShowNewMusic = false
+                                        print("Close button tapped")
                                     }, label: {
                                         Text("Close")
                                     })
@@ -61,6 +62,7 @@ struct MusicListView: View {
                                     Button(action: {
                                         self.ShowNewMusic = false
                                         self.action = 1
+                                        print("Create button tapped")
                                     }, label: {
                                         Text("Create")
                                     })
@@ -93,13 +95,13 @@ struct NavigationBar: View {
             .navigationBarItems(trailing:
                                     HStack{
                                         Button(action: {
-                                            print("Button pressed")
+                                            print("Plus button tapped")
                                         }) {
                                             Image(systemName: "plus.square.fill.on.square.fill")
                                                 .imageScale(.medium)
                                         }
                                         Button(action: {
-                                            print("Button pressed")
+                                            print("New button tapped")
                                             ShowNewMusic = true
                                         }) {
                                             Text("New")
