@@ -15,6 +15,7 @@
 		A250C32726A70499009185C2 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = A250C32526A70499009185C2 /* LaunchScreen.storyboard */; };
 		A2BE1DE026A852C700AD2103 /* LoginView.swift in Sources */ = {isa = PBXBuildFile; fileRef = A2BE1DDF26A852C700AD2103 /* LoginView.swift */; };
 		A2BE1DE226A8556100AD2103 /* MusicListView.swift in Sources */ = {isa = PBXBuildFile; fileRef = A2BE1DE126A8556100AD2103 /* MusicListView.swift */; };
+		A2E3D50A26B52D14008595AA /* MusicEditViewUIKit.swift in Sources */ = {isa = PBXBuildFile; fileRef = A2E3D50926B52D14008595AA /* MusicEditViewUIKit.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -28,6 +29,7 @@
 		A250C32826A70499009185C2 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		A2BE1DDF26A852C700AD2103 /* LoginView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = LoginView.swift; sourceTree = "<group>"; };
 		A2BE1DE126A8556100AD2103 /* MusicListView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MusicListView.swift; sourceTree = "<group>"; };
+		A2E3D50926B52D14008595AA /* MusicEditViewUIKit.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MusicEditViewUIKit.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -65,6 +67,7 @@
 				A2BE1DDF26A852C700AD2103 /* LoginView.swift */,
 				A2BE1DE126A8556100AD2103 /* MusicListView.swift */,
 				A200986126A8D7D800B741C7 /* MusicEditView.swift */,
+				A2E3D50926B52D14008595AA /* MusicEditViewUIKit.swift */,
 				A250C32026A70499009185C2 /* Assets.xcassets */,
 				A250C32526A70499009185C2 /* LaunchScreen.storyboard */,
 				A250C32826A70499009185C2 /* Info.plist */,
@@ -152,6 +155,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				A2BE1DE226A8556100AD2103 /* MusicListView.swift in Sources */,
+				A2E3D50A26B52D14008595AA /* MusicEditViewUIKit.swift in Sources */,
 				A250C31B26A70498009185C2 /* AppDelegate.swift in Sources */,
 				A200986226A8D7D800B741C7 /* MusicEditView.swift in Sources */,
 				A2BE1DE026A852C700AD2103 /* LoginView.swift in Sources */,
