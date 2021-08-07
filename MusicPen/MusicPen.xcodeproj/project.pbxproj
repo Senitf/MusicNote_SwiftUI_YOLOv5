@@ -3,83 +3,101 @@
 	archiveVersion = 1;
 	classes = {
 	};
-	objectVersion = 50;
+	objectVersion = 51;
 	objects = {
 
 /* Begin PBXBuildFile section */
-		A200986226A8D7D800B741C7 /* MusicEditView.swift in Sources */ = {isa = PBXBuildFile; fileRef = A200986126A8D7D800B741C7 /* MusicEditView.swift */; };
-		A250C31B26A70498009185C2 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = A250C31A26A70498009185C2 /* AppDelegate.swift */; };
-		A250C31D26A70498009185C2 /* SceneDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = A250C31C26A70498009185C2 /* SceneDelegate.swift */; };
-		A250C32126A70499009185C2 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = A250C32026A70499009185C2 /* Assets.xcassets */; };
-		A250C32426A70499009185C2 /* Preview Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = A250C32326A70499009185C2 /* Preview Assets.xcassets */; };
-		A250C32726A70499009185C2 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = A250C32526A70499009185C2 /* LaunchScreen.storyboard */; };
-		A2BE1DE026A852C700AD2103 /* LoginView.swift in Sources */ = {isa = PBXBuildFile; fileRef = A2BE1DDF26A852C700AD2103 /* LoginView.swift */; };
-		A2BE1DE226A8556100AD2103 /* MusicListView.swift in Sources */ = {isa = PBXBuildFile; fileRef = A2BE1DE126A8556100AD2103 /* MusicListView.swift */; };
-		A2E3D50A26B52D14008595AA /* MusicEditViewUIKit.swift in Sources */ = {isa = PBXBuildFile; fileRef = A2E3D50926B52D14008595AA /* MusicEditViewUIKit.swift */; };
+		692D09E5A1355C024D9B8C70 /* Pods_MusicPen.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 767199D12244BE9138A0561F /* Pods_MusicPen.framework */; };
+		A23D028926BDDBF800EE09A8 /* MusicPenApp.swift in Sources */ = {isa = PBXBuildFile; fileRef = A23D028826BDDBF800EE09A8 /* MusicPenApp.swift */; };
+		A23D028D26BDDBF900EE09A8 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = A23D028C26BDDBF900EE09A8 /* Assets.xcassets */; };
+		A23D029026BDDBF900EE09A8 /* Preview Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = A23D028F26BDDBF900EE09A8 /* Preview Assets.xcassets */; };
+		A23D029C26BDE57400EE09A8 /* LoginView.swift in Sources */ = {isa = PBXBuildFile; fileRef = A23D029B26BDE57400EE09A8 /* LoginView.swift */; };
+		A23D029E26BDE58D00EE09A8 /* MusicListView.swift in Sources */ = {isa = PBXBuildFile; fileRef = A23D029D26BDE58D00EE09A8 /* MusicListView.swift */; };
+		A23D02A026BDE59C00EE09A8 /* MusicEditView.swift in Sources */ = {isa = PBXBuildFile; fileRef = A23D029F26BDE59C00EE09A8 /* MusicEditView.swift */; };
+		A2933A6E26BDE7B200725114 /* GoogleService-Info.plist in Resources */ = {isa = PBXBuildFile; fileRef = A2933A6D26BDE7B200725114 /* GoogleService-Info.plist */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
-		A200986126A8D7D800B741C7 /* MusicEditView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MusicEditView.swift; sourceTree = "<group>"; };
-		A250C31726A70498009185C2 /* MusicPen.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = MusicPen.app; sourceTree = BUILT_PRODUCTS_DIR; };
-		A250C31A26A70498009185C2 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
-		A250C31C26A70498009185C2 /* SceneDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SceneDelegate.swift; sourceTree = "<group>"; };
-		A250C32026A70499009185C2 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
-		A250C32326A70499009185C2 /* Preview Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = "Preview Assets.xcassets"; sourceTree = "<group>"; };
-		A250C32626A70499009185C2 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
-		A250C32826A70499009185C2 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
-		A2BE1DDF26A852C700AD2103 /* LoginView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = LoginView.swift; sourceTree = "<group>"; };
-		A2BE1DE126A8556100AD2103 /* MusicListView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MusicListView.swift; sourceTree = "<group>"; };
-		A2E3D50926B52D14008595AA /* MusicEditViewUIKit.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MusicEditViewUIKit.swift; sourceTree = "<group>"; };
+		54C962FFEA8FD37CCB75B334 /* Pods-MusicPen.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-MusicPen.debug.xcconfig"; path = "Target Support Files/Pods-MusicPen/Pods-MusicPen.debug.xcconfig"; sourceTree = "<group>"; };
+		677A1D575A17D808274D257C /* Pods-MusicPen.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-MusicPen.release.xcconfig"; path = "Target Support Files/Pods-MusicPen/Pods-MusicPen.release.xcconfig"; sourceTree = "<group>"; };
+		767199D12244BE9138A0561F /* Pods_MusicPen.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_MusicPen.framework; sourceTree = BUILT_PRODUCTS_DIR; };
+		A23D028526BDDBF800EE09A8 /* MusicPen.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = MusicPen.app; sourceTree = BUILT_PRODUCTS_DIR; };
+		A23D028826BDDBF800EE09A8 /* MusicPenApp.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MusicPenApp.swift; sourceTree = "<group>"; };
+		A23D028C26BDDBF900EE09A8 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
+		A23D028F26BDDBF900EE09A8 /* Preview Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = "Preview Assets.xcassets"; sourceTree = "<group>"; };
+		A23D029126BDDBF900EE09A8 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		A23D029B26BDE57400EE09A8 /* LoginView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LoginView.swift; sourceTree = "<group>"; };
+		A23D029D26BDE58D00EE09A8 /* MusicListView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MusicListView.swift; sourceTree = "<group>"; };
+		A23D029F26BDE59C00EE09A8 /* MusicEditView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MusicEditView.swift; sourceTree = "<group>"; };
+		A2933A6D26BDE7B200725114 /* GoogleService-Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = "GoogleService-Info.plist"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
-		A250C31426A70498009185C2 /* Frameworks */ = {
+		A23D028226BDDBF800EE09A8 /* Frameworks */ = {
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				692D09E5A1355C024D9B8C70 /* Pods_MusicPen.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
-		A250C30E26A70498009185C2 = {
+		1CDEE8548C3BDD5D18DD5289 /* Frameworks */ = {
 			isa = PBXGroup;
 			children = (
-				A250C31926A70498009185C2 /* MusicPen */,
-				A250C31826A70498009185C2 /* Products */,
+				767199D12244BE9138A0561F /* Pods_MusicPen.framework */,
+			);
+			name = Frameworks;
+			sourceTree = "<group>";
+		};
+		84C4B75B5C43E2CE92A124AD /* Pods */ = {
+			isa = PBXGroup;
+			children = (
+				54C962FFEA8FD37CCB75B334 /* Pods-MusicPen.debug.xcconfig */,
+				677A1D575A17D808274D257C /* Pods-MusicPen.release.xcconfig */,
+			);
+			path = Pods;
+			sourceTree = "<group>";
+		};
+		A23D027C26BDDBF800EE09A8 = {
+			isa = PBXGroup;
+			children = (
+				A23D028726BDDBF800EE09A8 /* MusicPen */,
+				A23D028626BDDBF800EE09A8 /* Products */,
+				84C4B75B5C43E2CE92A124AD /* Pods */,
+				1CDEE8548C3BDD5D18DD5289 /* Frameworks */,
 			);
 			sourceTree = "<group>";
 		};
-		A250C31826A70498009185C2 /* Products */ = {
+		A23D028626BDDBF800EE09A8 /* Products */ = {
 			isa = PBXGroup;
 			children = (
-				A250C31726A70498009185C2 /* MusicPen.app */,
+				A23D028526BDDBF800EE09A8 /* MusicPen.app */,
 			);
 			name = Products;
 			sourceTree = "<group>";
 		};
-		A250C31926A70498009185C2 /* MusicPen */ = {
+		A23D028726BDDBF800EE09A8 /* MusicPen */ = {
 			isa = PBXGroup;
 			children = (
-				A250C31A26A70498009185C2 /* AppDelegate.swift */,
-				A250C31C26A70498009185C2 /* SceneDelegate.swift */,
-				A2BE1DDF26A852C700AD2103 /* LoginView.swift */,
-				A2BE1DE126A8556100AD2103 /* MusicListView.swift */,
-				A200986126A8D7D800B741C7 /* MusicEditView.swift */,
-				A2E3D50926B52D14008595AA /* MusicEditViewUIKit.swift */,
-				A250C32026A70499009185C2 /* Assets.xcassets */,
-				A250C32526A70499009185C2 /* LaunchScreen.storyboard */,
-				A250C32826A70499009185C2 /* Info.plist */,
-				A250C32226A70499009185C2 /* Preview Content */,
+				A23D028826BDDBF800EE09A8 /* MusicPenApp.swift */,
+				A23D029B26BDE57400EE09A8 /* LoginView.swift */,
+				A23D029D26BDE58D00EE09A8 /* MusicListView.swift */,
+				A23D029F26BDE59C00EE09A8 /* MusicEditView.swift */,
+				A23D028C26BDDBF900EE09A8 /* Assets.xcassets */,
+				A23D029126BDDBF900EE09A8 /* Info.plist */,
+				A2933A6D26BDE7B200725114 /* GoogleService-Info.plist */,
+				A23D028E26BDDBF900EE09A8 /* Preview Content */,
 			);
 			path = MusicPen;
 			sourceTree = "<group>";
 		};
-		A250C32226A70499009185C2 /* Preview Content */ = {
+		A23D028E26BDDBF900EE09A8 /* Preview Content */ = {
 			isa = PBXGroup;
 			children = (
-				A250C32326A70499009185C2 /* Preview Assets.xcassets */,
+				A23D028F26BDDBF900EE09A8 /* Preview Assets.xcassets */,
 			);
 			path = "Preview Content";
 			sourceTree = "<group>";
@@ -87,13 +105,15 @@
 /* End PBXGroup section */
 
 /* Begin PBXNativeTarget section */
-		A250C31626A70498009185C2 /* MusicPen */ = {
+		A23D028426BDDBF800EE09A8 /* MusicPen */ = {
 			isa = PBXNativeTarget;
-			buildConfigurationList = A250C32B26A70499009185C2 /* Build configuration list for PBXNativeTarget "MusicPen" */;
+			buildConfigurationList = A23D029426BDDBF900EE09A8 /* Build configuration list for PBXNativeTarget "MusicPen" */;
 			buildPhases = (
-				A250C31326A70498009185C2 /* Sources */,
-				A250C31426A70498009185C2 /* Frameworks */,
-				A250C31526A70498009185C2 /* Resources */,
+				4013642624FB50E1BFAE62A8 /* [CP] Check Pods Manifest.lock */,
+				A23D028126BDDBF800EE09A8 /* Sources */,
+				A23D028226BDDBF800EE09A8 /* Frameworks */,
+				A23D028326BDDBF800EE09A8 /* Resources */,
+				0DA23ADAF04AA98CC1B42D75 /* [CP] Embed Pods Frameworks */,
 			);
 			buildRules = (
 			);
@@ -101,24 +121,24 @@
 			);
 			name = MusicPen;
 			productName = MusicPen;
-			productReference = A250C31726A70498009185C2 /* MusicPen.app */;
+			productReference = A23D028526BDDBF800EE09A8 /* MusicPen.app */;
 			productType = "com.apple.product-type.application";
 		};
 /* End PBXNativeTarget section */
 
 /* Begin PBXProject section */
-		A250C30F26A70498009185C2 /* Project object */ = {
+		A23D027D26BDDBF800EE09A8 /* Project object */ = {
 			isa = PBXProject;
 			attributes = {
 				LastSwiftUpdateCheck = 1250;
 				LastUpgradeCheck = 1250;
 				TargetAttributes = {
-					A250C31626A70498009185C2 = {
+					A23D028426BDDBF800EE09A8 = {
 						CreatedOnToolsVersion = 12.5.1;
 					};
 				};
 			};
-			buildConfigurationList = A250C31226A70498009185C2 /* Build configuration list for PBXProject "MusicPen" */;
+			buildConfigurationList = A23D028026BDDBF800EE09A8 /* Build configuration list for PBXProject "MusicPen" */;
 			compatibilityVersion = "Xcode 9.3";
 			developmentRegion = en;
 			hasScannedForEncodings = 0;
@@ -126,58 +146,87 @@
 				en,
 				Base,
 			);
-			mainGroup = A250C30E26A70498009185C2;
-			productRefGroup = A250C31826A70498009185C2 /* Products */;
+			mainGroup = A23D027C26BDDBF800EE09A8;
+			productRefGroup = A23D028626BDDBF800EE09A8 /* Products */;
 			projectDirPath = "";
 			projectRoot = "";
 			targets = (
-				A250C31626A70498009185C2 /* MusicPen */,
+				A23D028426BDDBF800EE09A8 /* MusicPen */,
 			);
 		};
 /* End PBXProject section */
 
 /* Begin PBXResourcesBuildPhase section */
-		A250C31526A70498009185C2 /* Resources */ = {
+		A23D028326BDDBF800EE09A8 /* Resources */ = {
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				A250C32726A70499009185C2 /* LaunchScreen.storyboard in Resources */,
-				A250C32426A70499009185C2 /* Preview Assets.xcassets in Resources */,
-				A250C32126A70499009185C2 /* Assets.xcassets in Resources */,
+				A23D029026BDDBF900EE09A8 /* Preview Assets.xcassets in Resources */,
+				A23D028D26BDDBF900EE09A8 /* Assets.xcassets in Resources */,
+				A2933A6E26BDE7B200725114 /* GoogleService-Info.plist in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
 /* End PBXResourcesBuildPhase section */
 
+/* Begin PBXShellScriptBuildPhase section */
+		0DA23ADAF04AA98CC1B42D75 /* [CP] Embed Pods Frameworks */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputFileListPaths = (
+				"${PODS_ROOT}/Target Support Files/Pods-MusicPen/Pods-MusicPen-frameworks-${CONFIGURATION}-input-files.xcfilelist",
+			);
+			name = "[CP] Embed Pods Frameworks";
+			outputFileListPaths = (
+				"${PODS_ROOT}/Target Support Files/Pods-MusicPen/Pods-MusicPen-frameworks-${CONFIGURATION}-output-files.xcfilelist",
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "\"${PODS_ROOT}/Target Support Files/Pods-MusicPen/Pods-MusicPen-frameworks.sh\"\n";
+			showEnvVarsInLog = 0;
+		};
+		4013642624FB50E1BFAE62A8 /* [CP] Check Pods Manifest.lock */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputFileListPaths = (
+			);
+			inputPaths = (
+				"${PODS_PODFILE_DIR_PATH}/Podfile.lock",
+				"${PODS_ROOT}/Manifest.lock",
+			);
+			name = "[CP] Check Pods Manifest.lock";
+			outputFileListPaths = (
+			);
+			outputPaths = (
+				"$(DERIVED_FILE_DIR)/Pods-MusicPen-checkManifestLockResult.txt",
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "diff \"${PODS_PODFILE_DIR_PATH}/Podfile.lock\" \"${PODS_ROOT}/Manifest.lock\" > /dev/null\nif [ $? != 0 ] ; then\n    # print error to STDERR\n    echo \"error: The sandbox is not in sync with the Podfile.lock. Run 'pod install' or update your CocoaPods installation.\" >&2\n    exit 1\nfi\n# This output is used by Xcode 'outputs' to avoid re-running this script phase.\necho \"SUCCESS\" > \"${SCRIPT_OUTPUT_FILE_0}\"\n";
+			showEnvVarsInLog = 0;
+		};
+/* End PBXShellScriptBuildPhase section */
+
 /* Begin PBXSourcesBuildPhase section */
-		A250C31326A70498009185C2 /* Sources */ = {
+		A23D028126BDDBF800EE09A8 /* Sources */ = {
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				A2BE1DE226A8556100AD2103 /* MusicListView.swift in Sources */,
-				A2E3D50A26B52D14008595AA /* MusicEditViewUIKit.swift in Sources */,
-				A250C31B26A70498009185C2 /* AppDelegate.swift in Sources */,
-				A200986226A8D7D800B741C7 /* MusicEditView.swift in Sources */,
-				A2BE1DE026A852C700AD2103 /* LoginView.swift in Sources */,
-				A250C31D26A70498009185C2 /* SceneDelegate.swift in Sources */,
+				A23D029C26BDE57400EE09A8 /* LoginView.swift in Sources */,
+				A23D02A026BDE59C00EE09A8 /* MusicEditView.swift in Sources */,
+				A23D029E26BDE58D00EE09A8 /* MusicListView.swift in Sources */,
+				A23D028926BDDBF800EE09A8 /* MusicPenApp.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
 /* End PBXSourcesBuildPhase section */
 
-/* Begin PBXVariantGroup section */
-		A250C32526A70499009185C2 /* LaunchScreen.storyboard */ = {
-			isa = PBXVariantGroup;
-			children = (
-				A250C32626A70499009185C2 /* Base */,
-			);
-			name = LaunchScreen.storyboard;
-			sourceTree = "<group>";
-		};
-/* End PBXVariantGroup section */
-
 /* Begin XCBuildConfiguration section */
-		A250C32926A70499009185C2 /* Debug */ = {
+		A23D029226BDDBF900EE09A8 /* Debug */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				ALWAYS_SEARCH_USER_PATHS = NO;
@@ -238,7 +287,7 @@
 			};
 			name = Debug;
 		};
-		A250C32A26A70499009185C2 /* Release */ = {
+		A23D029326BDDBF900EE09A8 /* Release */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				ALWAYS_SEARCH_USER_PATHS = NO;
@@ -293,8 +342,9 @@
 			};
 			name = Release;
 		};
-		A250C32C26A70499009185C2 /* Debug */ = {
+		A23D029526BDDBF900EE09A8 /* Debug */ = {
 			isa = XCBuildConfiguration;
+			baseConfigurationReference = 54C962FFEA8FD37CCB75B334 /* Pods-MusicPen.debug.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
@@ -303,19 +353,21 @@
 				DEVELOPMENT_TEAM = 4A8XGM73NS;
 				ENABLE_PREVIEWS = YES;
 				INFOPLIST_FILE = MusicPen/Info.plist;
+				IPHONEOS_DEPLOYMENT_TARGET = 14.0;
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
 					"@executable_path/Frameworks",
 				);
-				PRODUCT_BUNDLE_IDENTIFIER = KMH.MusicPen;
+				PRODUCT_BUNDLE_IDENTIFIER = com.senitf.MusicPen;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SWIFT_VERSION = 5.0;
-				TARGETED_DEVICE_FAMILY = 2;
+				TARGETED_DEVICE_FAMILY = "1,2";
 			};
 			name = Debug;
 		};
-		A250C32D26A70499009185C2 /* Release */ = {
+		A23D029626BDDBF900EE09A8 /* Release */ = {
 			isa = XCBuildConfiguration;
+			baseConfigurationReference = 677A1D575A17D808274D257C /* Pods-MusicPen.release.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
@@ -324,39 +376,40 @@
 				DEVELOPMENT_TEAM = 4A8XGM73NS;
 				ENABLE_PREVIEWS = YES;
 				INFOPLIST_FILE = MusicPen/Info.plist;
+				IPHONEOS_DEPLOYMENT_TARGET = 14.0;
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
 					"@executable_path/Frameworks",
 				);
-				PRODUCT_BUNDLE_IDENTIFIER = KMH.MusicPen;
+				PRODUCT_BUNDLE_IDENTIFIER = com.senitf.MusicPen;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SWIFT_VERSION = 5.0;
-				TARGETED_DEVICE_FAMILY = 2;
+				TARGETED_DEVICE_FAMILY = "1,2";
 			};
 			name = Release;
 		};
 /* End XCBuildConfiguration section */
 
 /* Begin XCConfigurationList section */
-		A250C31226A70498009185C2 /* Build configuration list for PBXProject "MusicPen" */ = {
+		A23D028026BDDBF800EE09A8 /* Build configuration list for PBXProject "MusicPen" */ = {
 			isa = XCConfigurationList;
 			buildConfigurations = (
-				A250C32926A70499009185C2 /* Debug */,
-				A250C32A26A70499009185C2 /* Release */,
+				A23D029226BDDBF900EE09A8 /* Debug */,
+				A23D029326BDDBF900EE09A8 /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
 			defaultConfigurationName = Release;
 		};
-		A250C32B26A70499009185C2 /* Build configuration list for PBXNativeTarget "MusicPen" */ = {
+		A23D029426BDDBF900EE09A8 /* Build configuration list for PBXNativeTarget "MusicPen" */ = {
 			isa = XCConfigurationList;
 			buildConfigurations = (
-				A250C32C26A70499009185C2 /* Debug */,
-				A250C32D26A70499009185C2 /* Release */,
+				A23D029526BDDBF900EE09A8 /* Debug */,
+				A23D029626BDDBF900EE09A8 /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
 			defaultConfigurationName = Release;
 		};
 /* End XCConfigurationList section */
 	};
-	rootObject = A250C30F26A70498009185C2 /* Project object */;
+	rootObject = A23D027D26BDDBF800EE09A8 /* Project object */;
 }

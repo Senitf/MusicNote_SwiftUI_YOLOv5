@@ -34,14 +34,18 @@ struct MusicEditView: View {
     var body: some View {
             ZStack{
                 VStack{
-                    ForEach(0 ..< MusicBar){ _ in
+                    ForEach(0 ..< MusicBar){ i in
                         HStack{
-                            ForEach(0 ..< 4, id: \.self){ _ in
+                            ForEach(0 ..< 4, id: \.self){ j in
                                 SubUIView()
                                     .frame(width: 250.0, height: 100.0, alignment: .center)
                                     .border(Color.black)
                                     .padding(.leading, -7)
                                     .padding(.bottom, 25)
+                                    .id(i)
+                                    .onTapGesture {
+                                        print(String(i * 10 + j))
+                                    }
                             }
                         }
                     }

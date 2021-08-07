@@ -1,0 +1,6 @@
+framework module Pods_MusicPen {
+  umbrella header "Pods-MusicPen-umbrella.h"
+
+  export *
+  module * { export * }
+}
