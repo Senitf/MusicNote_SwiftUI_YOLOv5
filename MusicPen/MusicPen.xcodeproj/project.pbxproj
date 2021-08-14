@@ -7,113 +7,122 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
-		692D09E5A1355C024D9B8C70 /* Pods_MusicPen.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 767199D12244BE9138A0561F /* Pods_MusicPen.framework */; };
-		A23D028926BDDBF800EE09A8 /* MusicPenApp.swift in Sources */ = {isa = PBXBuildFile; fileRef = A23D028826BDDBF800EE09A8 /* MusicPenApp.swift */; };
-		A23D028D26BDDBF900EE09A8 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = A23D028C26BDDBF900EE09A8 /* Assets.xcassets */; };
-		A23D029026BDDBF900EE09A8 /* Preview Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = A23D028F26BDDBF900EE09A8 /* Preview Assets.xcassets */; };
-		A23D029C26BDE57400EE09A8 /* LoginView.swift in Sources */ = {isa = PBXBuildFile; fileRef = A23D029B26BDE57400EE09A8 /* LoginView.swift */; };
-		A23D029E26BDE58D00EE09A8 /* MusicListView.swift in Sources */ = {isa = PBXBuildFile; fileRef = A23D029D26BDE58D00EE09A8 /* MusicListView.swift */; };
-		A23D02A026BDE59C00EE09A8 /* MusicEditView.swift in Sources */ = {isa = PBXBuildFile; fileRef = A23D029F26BDE59C00EE09A8 /* MusicEditView.swift */; };
-		A2933A6E26BDE7B200725114 /* GoogleService-Info.plist in Resources */ = {isa = PBXBuildFile; fileRef = A2933A6D26BDE7B200725114 /* GoogleService-Info.plist */; };
+		8C47111C5BF0676E2B0B45F2 /* Pods_MusicPen.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 9BD1E34A7D3880665FA48854 /* Pods_MusicPen.framework */; };
+		A21868D426C76137008D2FB0 /* GoogleService-Info.plist in Resources */ = {isa = PBXBuildFile; fileRef = A21868D326C76137008D2FB0 /* GoogleService-Info.plist */; };
+		A2FB630D26C75F9200D9D939 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = A2FB630C26C75F9200D9D939 /* AppDelegate.swift */; };
+		A2FB630F26C75F9200D9D939 /* SceneDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = A2FB630E26C75F9200D9D939 /* SceneDelegate.swift */; };
+		A2FB631126C75F9200D9D939 /* ContentView.swift in Sources */ = {isa = PBXBuildFile; fileRef = A2FB631026C75F9200D9D939 /* ContentView.swift */; };
+		A2FB631326C75F9300D9D939 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = A2FB631226C75F9300D9D939 /* Assets.xcassets */; };
+		A2FB631626C75F9300D9D939 /* Preview Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = A2FB631526C75F9300D9D939 /* Preview Assets.xcassets */; };
+		A2FB631926C75F9300D9D939 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = A2FB631726C75F9300D9D939 /* LaunchScreen.storyboard */; };
+		A2FB632526C75FBF00D9D939 /* LoginView.swift in Sources */ = {isa = PBXBuildFile; fileRef = A2FB632126C75FBF00D9D939 /* LoginView.swift */; };
+		A2FB632626C75FBF00D9D939 /* MusicListView.swift in Sources */ = {isa = PBXBuildFile; fileRef = A2FB632226C75FBF00D9D939 /* MusicListView.swift */; };
+		A2FB632726C75FBF00D9D939 /* MusicEditView.swift in Sources */ = {isa = PBXBuildFile; fileRef = A2FB632326C75FBF00D9D939 /* MusicEditView.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
-		54C962FFEA8FD37CCB75B334 /* Pods-MusicPen.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-MusicPen.debug.xcconfig"; path = "Target Support Files/Pods-MusicPen/Pods-MusicPen.debug.xcconfig"; sourceTree = "<group>"; };
-		677A1D575A17D808274D257C /* Pods-MusicPen.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-MusicPen.release.xcconfig"; path = "Target Support Files/Pods-MusicPen/Pods-MusicPen.release.xcconfig"; sourceTree = "<group>"; };
-		767199D12244BE9138A0561F /* Pods_MusicPen.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_MusicPen.framework; sourceTree = BUILT_PRODUCTS_DIR; };
-		A23D028526BDDBF800EE09A8 /* MusicPen.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = MusicPen.app; sourceTree = BUILT_PRODUCTS_DIR; };
-		A23D028826BDDBF800EE09A8 /* MusicPenApp.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MusicPenApp.swift; sourceTree = "<group>"; };
-		A23D028C26BDDBF900EE09A8 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
-		A23D028F26BDDBF900EE09A8 /* Preview Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = "Preview Assets.xcassets"; sourceTree = "<group>"; };
-		A23D029126BDDBF900EE09A8 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
-		A23D029B26BDE57400EE09A8 /* LoginView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LoginView.swift; sourceTree = "<group>"; };
-		A23D029D26BDE58D00EE09A8 /* MusicListView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MusicListView.swift; sourceTree = "<group>"; };
-		A23D029F26BDE59C00EE09A8 /* MusicEditView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MusicEditView.swift; sourceTree = "<group>"; };
-		A2933A6D26BDE7B200725114 /* GoogleService-Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = "GoogleService-Info.plist"; sourceTree = "<group>"; };
+		88845D5E01D26F5F9BE13909 /* Pods-MusicPen.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-MusicPen.release.xcconfig"; path = "Target Support Files/Pods-MusicPen/Pods-MusicPen.release.xcconfig"; sourceTree = "<group>"; };
+		9BD1E34A7D3880665FA48854 /* Pods_MusicPen.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_MusicPen.framework; sourceTree = BUILT_PRODUCTS_DIR; };
+		A21868D326C76137008D2FB0 /* GoogleService-Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = "GoogleService-Info.plist"; sourceTree = "<group>"; };
+		A2FB630926C75F9200D9D939 /* MusicPen.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = MusicPen.app; sourceTree = BUILT_PRODUCTS_DIR; };
+		A2FB630C26C75F9200D9D939 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
+		A2FB630E26C75F9200D9D939 /* SceneDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SceneDelegate.swift; sourceTree = "<group>"; };
+		A2FB631026C75F9200D9D939 /* ContentView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ContentView.swift; sourceTree = "<group>"; };
+		A2FB631226C75F9300D9D939 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
+		A2FB631526C75F9300D9D939 /* Preview Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = "Preview Assets.xcassets"; sourceTree = "<group>"; };
+		A2FB631826C75F9300D9D939 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
+		A2FB631A26C75F9300D9D939 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		A2FB632126C75FBF00D9D939 /* LoginView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = LoginView.swift; sourceTree = "<group>"; };
+		A2FB632226C75FBF00D9D939 /* MusicListView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MusicListView.swift; sourceTree = "<group>"; };
+		A2FB632326C75FBF00D9D939 /* MusicEditView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MusicEditView.swift; sourceTree = "<group>"; };
+		C349BCE99D38010CC175C846 /* Pods-MusicPen.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-MusicPen.debug.xcconfig"; path = "Target Support Files/Pods-MusicPen/Pods-MusicPen.debug.xcconfig"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
-		A23D028226BDDBF800EE09A8 /* Frameworks */ = {
+		A2FB630626C75F9200D9D939 /* Frameworks */ = {
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				692D09E5A1355C024D9B8C70 /* Pods_MusicPen.framework in Frameworks */,
+				8C47111C5BF0676E2B0B45F2 /* Pods_MusicPen.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
-		1CDEE8548C3BDD5D18DD5289 /* Frameworks */ = {
+		049E6E9DE1B12CFA199FD7E4 /* Frameworks */ = {
 			isa = PBXGroup;
 			children = (
-				767199D12244BE9138A0561F /* Pods_MusicPen.framework */,
+				9BD1E34A7D3880665FA48854 /* Pods_MusicPen.framework */,
 			);
 			name = Frameworks;
 			sourceTree = "<group>";
 		};
-		84C4B75B5C43E2CE92A124AD /* Pods */ = {
+		A2FB630026C75F9200D9D939 = {
 			isa = PBXGroup;
 			children = (
-				54C962FFEA8FD37CCB75B334 /* Pods-MusicPen.debug.xcconfig */,
-				677A1D575A17D808274D257C /* Pods-MusicPen.release.xcconfig */,
-			);
-			path = Pods;
-			sourceTree = "<group>";
-		};
-		A23D027C26BDDBF800EE09A8 = {
-			isa = PBXGroup;
-			children = (
-				A23D028726BDDBF800EE09A8 /* MusicPen */,
-				A23D028626BDDBF800EE09A8 /* Products */,
-				84C4B75B5C43E2CE92A124AD /* Pods */,
-				1CDEE8548C3BDD5D18DD5289 /* Frameworks */,
+				A2FB630B26C75F9200D9D939 /* MusicPen */,
+				A2FB630A26C75F9200D9D939 /* Products */,
+				D13C6D9943C66900F35EC474 /* Pods */,
+				049E6E9DE1B12CFA199FD7E4 /* Frameworks */,
 			);
 			sourceTree = "<group>";
 		};
-		A23D028626BDDBF800EE09A8 /* Products */ = {
+		A2FB630A26C75F9200D9D939 /* Products */ = {
 			isa = PBXGroup;
 			children = (
-				A23D028526BDDBF800EE09A8 /* MusicPen.app */,
+				A2FB630926C75F9200D9D939 /* MusicPen.app */,
 			);
 			name = Products;
 			sourceTree = "<group>";
 		};
-		A23D028726BDDBF800EE09A8 /* MusicPen */ = {
+		A2FB630B26C75F9200D9D939 /* MusicPen */ = {
 			isa = PBXGroup;
 			children = (
-				A23D028826BDDBF800EE09A8 /* MusicPenApp.swift */,
-				A23D029B26BDE57400EE09A8 /* LoginView.swift */,
-				A23D029D26BDE58D00EE09A8 /* MusicListView.swift */,
-				A23D029F26BDE59C00EE09A8 /* MusicEditView.swift */,
-				A23D028C26BDDBF900EE09A8 /* Assets.xcassets */,
-				A23D029126BDDBF900EE09A8 /* Info.plist */,
-				A2933A6D26BDE7B200725114 /* GoogleService-Info.plist */,
-				A23D028E26BDDBF900EE09A8 /* Preview Content */,
+				A2FB630C26C75F9200D9D939 /* AppDelegate.swift */,
+				A2FB630E26C75F9200D9D939 /* SceneDelegate.swift */,
+				A2FB631026C75F9200D9D939 /* ContentView.swift */,
+				A2FB632126C75FBF00D9D939 /* LoginView.swift */,
+				A2FB632326C75FBF00D9D939 /* MusicEditView.swift */,
+				A2FB632226C75FBF00D9D939 /* MusicListView.swift */,
+				A2FB631226C75F9300D9D939 /* Assets.xcassets */,
+				A2FB631726C75F9300D9D939 /* LaunchScreen.storyboard */,
+				A21868D326C76137008D2FB0 /* GoogleService-Info.plist */,
+				A2FB631A26C75F9300D9D939 /* Info.plist */,
+				A2FB631426C75F9300D9D939 /* Preview Content */,
 			);
 			path = MusicPen;
 			sourceTree = "<group>";
 		};
-		A23D028E26BDDBF900EE09A8 /* Preview Content */ = {
+		A2FB631426C75F9300D9D939 /* Preview Content */ = {
 			isa = PBXGroup;
 			children = (
-				A23D028F26BDDBF900EE09A8 /* Preview Assets.xcassets */,
+				A2FB631526C75F9300D9D939 /* Preview Assets.xcassets */,
 			);
 			path = "Preview Content";
+			sourceTree = "<group>";
+		};
+		D13C6D9943C66900F35EC474 /* Pods */ = {
+			isa = PBXGroup;
+			children = (
+				C349BCE99D38010CC175C846 /* Pods-MusicPen.debug.xcconfig */,
+				88845D5E01D26F5F9BE13909 /* Pods-MusicPen.release.xcconfig */,
+			);
+			path = Pods;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
 
 /* Begin PBXNativeTarget section */
-		A23D028426BDDBF800EE09A8 /* MusicPen */ = {
+		A2FB630826C75F9200D9D939 /* MusicPen */ = {
 			isa = PBXNativeTarget;
-			buildConfigurationList = A23D029426BDDBF900EE09A8 /* Build configuration list for PBXNativeTarget "MusicPen" */;
+			buildConfigurationList = A2FB631D26C75F9300D9D939 /* Build configuration list for PBXNativeTarget "MusicPen" */;
 			buildPhases = (
-				4013642624FB50E1BFAE62A8 /* [CP] Check Pods Manifest.lock */,
-				A23D028126BDDBF800EE09A8 /* Sources */,
-				A23D028226BDDBF800EE09A8 /* Frameworks */,
-				A23D028326BDDBF800EE09A8 /* Resources */,
-				0DA23ADAF04AA98CC1B42D75 /* [CP] Embed Pods Frameworks */,
+				566F045297ACB4C7B0901AE4 /* [CP] Check Pods Manifest.lock */,
+				A2FB630526C75F9200D9D939 /* Sources */,
+				A2FB630626C75F9200D9D939 /* Frameworks */,
+				A2FB630726C75F9200D9D939 /* Resources */,
+				404CC3764F70577885E68116 /* [CP] Embed Pods Frameworks */,
 			);
 			buildRules = (
 			);
@@ -121,24 +130,24 @@
 			);
 			name = MusicPen;
 			productName = MusicPen;
-			productReference = A23D028526BDDBF800EE09A8 /* MusicPen.app */;
+			productReference = A2FB630926C75F9200D9D939 /* MusicPen.app */;
 			productType = "com.apple.product-type.application";
 		};
 /* End PBXNativeTarget section */
 
 /* Begin PBXProject section */
-		A23D027D26BDDBF800EE09A8 /* Project object */ = {
+		A2FB630126C75F9200D9D939 /* Project object */ = {
 			isa = PBXProject;
 			attributes = {
 				LastSwiftUpdateCheck = 1250;
 				LastUpgradeCheck = 1250;
 				TargetAttributes = {
-					A23D028426BDDBF800EE09A8 = {
+					A2FB630826C75F9200D9D939 = {
 						CreatedOnToolsVersion = 12.5.1;
 					};
 				};
 			};
-			buildConfigurationList = A23D028026BDDBF800EE09A8 /* Build configuration list for PBXProject "MusicPen" */;
+			buildConfigurationList = A2FB630426C75F9200D9D939 /* Build configuration list for PBXProject "MusicPen" */;
 			compatibilityVersion = "Xcode 9.3";
 			developmentRegion = en;
 			hasScannedForEncodings = 0;
@@ -146,31 +155,32 @@
 				en,
 				Base,
 			);
-			mainGroup = A23D027C26BDDBF800EE09A8;
-			productRefGroup = A23D028626BDDBF800EE09A8 /* Products */;
+			mainGroup = A2FB630026C75F9200D9D939;
+			productRefGroup = A2FB630A26C75F9200D9D939 /* Products */;
 			projectDirPath = "";
 			projectRoot = "";
 			targets = (
-				A23D028426BDDBF800EE09A8 /* MusicPen */,
+				A2FB630826C75F9200D9D939 /* MusicPen */,
 			);
 		};
 /* End PBXProject section */
 
 /* Begin PBXResourcesBuildPhase section */
-		A23D028326BDDBF800EE09A8 /* Resources */ = {
+		A2FB630726C75F9200D9D939 /* Resources */ = {
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				A23D029026BDDBF900EE09A8 /* Preview Assets.xcassets in Resources */,
-				A23D028D26BDDBF900EE09A8 /* Assets.xcassets in Resources */,
-				A2933A6E26BDE7B200725114 /* GoogleService-Info.plist in Resources */,
+				A2FB631926C75F9300D9D939 /* LaunchScreen.storyboard in Resources */,
+				A21868D426C76137008D2FB0 /* GoogleService-Info.plist in Resources */,
+				A2FB631626C75F9300D9D939 /* Preview Assets.xcassets in Resources */,
+				A2FB631326C75F9300D9D939 /* Assets.xcassets in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
 /* End PBXResourcesBuildPhase section */
 
 /* Begin PBXShellScriptBuildPhase section */
-		0DA23ADAF04AA98CC1B42D75 /* [CP] Embed Pods Frameworks */ = {
+		404CC3764F70577885E68116 /* [CP] Embed Pods Frameworks */ = {
 			isa = PBXShellScriptBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
@@ -187,7 +197,7 @@
 			shellScript = "\"${PODS_ROOT}/Target Support Files/Pods-MusicPen/Pods-MusicPen-frameworks.sh\"\n";
 			showEnvVarsInLog = 0;
 		};
-		4013642624FB50E1BFAE62A8 /* [CP] Check Pods Manifest.lock */ = {
+		566F045297ACB4C7B0901AE4 /* [CP] Check Pods Manifest.lock */ = {
 			isa = PBXShellScriptBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
@@ -212,21 +222,34 @@
 /* End PBXShellScriptBuildPhase section */
 
 /* Begin PBXSourcesBuildPhase section */
-		A23D028126BDDBF800EE09A8 /* Sources */ = {
+		A2FB630526C75F9200D9D939 /* Sources */ = {
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				A23D029C26BDE57400EE09A8 /* LoginView.swift in Sources */,
-				A23D02A026BDE59C00EE09A8 /* MusicEditView.swift in Sources */,
-				A23D029E26BDE58D00EE09A8 /* MusicListView.swift in Sources */,
-				A23D028926BDDBF800EE09A8 /* MusicPenApp.swift in Sources */,
+				A2FB630D26C75F9200D9D939 /* AppDelegate.swift in Sources */,
+				A2FB632726C75FBF00D9D939 /* MusicEditView.swift in Sources */,
+				A2FB632626C75FBF00D9D939 /* MusicListView.swift in Sources */,
+				A2FB630F26C75F9200D9D939 /* SceneDelegate.swift in Sources */,
+				A2FB632526C75FBF00D9D939 /* LoginView.swift in Sources */,
+				A2FB631126C75F9200D9D939 /* ContentView.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
 /* End PBXSourcesBuildPhase section */
 
+/* Begin PBXVariantGroup section */
+		A2FB631726C75F9300D9D939 /* LaunchScreen.storyboard */ = {
+			isa = PBXVariantGroup;
+			children = (
+				A2FB631826C75F9300D9D939 /* Base */,
+			);
+			name = LaunchScreen.storyboard;
+			sourceTree = "<group>";
+		};
+/* End PBXVariantGroup section */
+
 /* Begin XCBuildConfiguration section */
-		A23D029226BDDBF900EE09A8 /* Debug */ = {
+		A2FB631B26C75F9300D9D939 /* Debug */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				ALWAYS_SEARCH_USER_PATHS = NO;
@@ -287,7 +310,7 @@
 			};
 			name = Debug;
 		};
-		A23D029326BDDBF900EE09A8 /* Release */ = {
+		A2FB631C26C75F9300D9D939 /* Release */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				ALWAYS_SEARCH_USER_PATHS = NO;
@@ -342,9 +365,9 @@
 			};
 			name = Release;
 		};
-		A23D029526BDDBF900EE09A8 /* Debug */ = {
+		A2FB631E26C75F9300D9D939 /* Debug */ = {
 			isa = XCBuildConfiguration;
-			baseConfigurationReference = 54C962FFEA8FD37CCB75B334 /* Pods-MusicPen.debug.xcconfig */;
+			baseConfigurationReference = C349BCE99D38010CC175C846 /* Pods-MusicPen.debug.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
@@ -353,7 +376,6 @@
 				DEVELOPMENT_TEAM = 4A8XGM73NS;
 				ENABLE_PREVIEWS = YES;
 				INFOPLIST_FILE = MusicPen/Info.plist;
-				IPHONEOS_DEPLOYMENT_TARGET = 14.0;
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
 					"@executable_path/Frameworks",
@@ -365,9 +387,9 @@
 			};
 			name = Debug;
 		};
-		A23D029626BDDBF900EE09A8 /* Release */ = {
+		A2FB631F26C75F9300D9D939 /* Release */ = {
 			isa = XCBuildConfiguration;
-			baseConfigurationReference = 677A1D575A17D808274D257C /* Pods-MusicPen.release.xcconfig */;
+			baseConfigurationReference = 88845D5E01D26F5F9BE13909 /* Pods-MusicPen.release.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
@@ -376,7 +398,6 @@
 				DEVELOPMENT_TEAM = 4A8XGM73NS;
 				ENABLE_PREVIEWS = YES;
 				INFOPLIST_FILE = MusicPen/Info.plist;
-				IPHONEOS_DEPLOYMENT_TARGET = 14.0;
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
 					"@executable_path/Frameworks",
@@ -391,25 +412,25 @@
 /* End XCBuildConfiguration section */
 
 /* Begin XCConfigurationList section */
-		A23D028026BDDBF800EE09A8 /* Build configuration list for PBXProject "MusicPen" */ = {
+		A2FB630426C75F9200D9D939 /* Build configuration list for PBXProject "MusicPen" */ = {
 			isa = XCConfigurationList;
 			buildConfigurations = (
-				A23D029226BDDBF900EE09A8 /* Debug */,
-				A23D029326BDDBF900EE09A8 /* Release */,
+				A2FB631B26C75F9300D9D939 /* Debug */,
+				A2FB631C26C75F9300D9D939 /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
 			defaultConfigurationName = Release;
 		};
-		A23D029426BDDBF900EE09A8 /* Build configuration list for PBXNativeTarget "MusicPen" */ = {
+		A2FB631D26C75F9300D9D939 /* Build configuration list for PBXNativeTarget "MusicPen" */ = {
 			isa = XCConfigurationList;
 			buildConfigurations = (
-				A23D029526BDDBF900EE09A8 /* Debug */,
-				A23D029626BDDBF900EE09A8 /* Release */,
+				A2FB631E26C75F9300D9D939 /* Debug */,
+				A2FB631F26C75F9300D9D939 /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
 			defaultConfigurationName = Release;
 		};
 /* End XCConfigurationList section */
 	};
-	rootObject = A23D027D26BDDBF800EE09A8 /* Project object */;
+	rootObject = A2FB630126C75F9200D9D939 /* Project object */;
 }
