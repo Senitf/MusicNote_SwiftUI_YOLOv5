@@ -15,6 +15,8 @@ struct MusicEditView: View {
     
     @State var action:Int? = nil
     @State private var showingPopover = false
+    
+    @State var currentBar:Int = -1
 
     @Environment(\.undoManager) private var undoManage
     
@@ -39,12 +41,18 @@ struct MusicEditView: View {
                             ForEach(0 ..< 4, id: \.self){ j in
                                 SubUIView()
                                     .frame(width: 250.0, height: 100.0, alignment: .center)
-                                    .border(Color.black)
                                     .padding(.leading, -7)
                                     .padding(.bottom, 25)
-                                    .id(i)
+                                    .id(i * 4 + j)
                                     .onTapGesture {
-                                        print(String(i * 10 + j))
+                                        currentBar = i * 4 + j
+                                        print(String(currentBar))
+                                        print("Popover toggled")
+                                        if showingPopover {
+                                            self.saveSignature()
+                                            print("pic saved")
+                                        }
+                                        showingPopover.toggle()
                                     }
                             }
                         }
@@ -69,6 +77,7 @@ struct MusicEditView: View {
                 if showingPopover {
                     VStack{
                         HStack{
+                            Text(String(currentBar))
                             Button("Clear") {
                                 canvasView.drawing = PKDrawing()
                             }
@@ -80,10 +89,12 @@ struct MusicEditView: View {
                             }
                             Button("New") {}
                         }
+                        .padding()
                         MyCanvas(canvasView: $canvasView)
                             .frame(width: 1000.0, height: 400.0, alignment: .leading)
                             .border(Color.gray, width:5)
                     }
+                    .border(Color.gray, width:5)
                     .background(Color.white)
                 }
             }
@@ -107,7 +118,21 @@ struct MusicEditView: View {
 
 struct SubUIView: View {
     var body: some View {
-        Text("Canvas Image Data")
+        Path { path in
+            path.move(to: CGPoint(x:0, y:10))
+            path.addLine(to: CGPoint(x:250, y:10))
+            path.move(to: CGPoint(x:0, y:30))
+            path.addLine(to: CGPoint(x:250, y:30))
+            path.move(to: CGPoint(x:0, y:50))
+            path.addLine(to: CGPoint(x:250, y:50))
+            path.move(to: CGPoint(x:0, y:70))
+            path.addLine(to: CGPoint(x:250, y:70))
+            path.move(to: CGPoint(x:0, y:90))
+            path.addLine(to: CGPoint(x:250, y:90))
+            path.move(to: CGPoint(x:250, y:10))
+            path.addLine(to: CGPoint(x:250, y:90))
+        }
+        .stroke(Color.black, lineWidth: 2)
     }
 }
 

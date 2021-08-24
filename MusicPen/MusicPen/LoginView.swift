@@ -6,14 +6,25 @@
 //
 
 import SwiftUI
+import Firebase
+import FirebaseAuth
 
 let lightGreyColor = Color(red: 239.0/255.0, green: 243.0/255.0, blue: 244.0/255.0, opacity: 1.0)
 let storedUsername = "Seni"
 let storedPassword = "qwe123"
 
+class ViewModel {
+    func login(){
+        
+    }
+}
+
 struct LoginView : View {
     @State var username: String = ""
     @State var password: String = ""
+    @State var signUpUsername: String = ""
+    @State var signUpPassword: String = ""
+    @State var isPopoverPresented: Bool = false
     @State var authenticationDidFail: Bool = false
     @State var authenticationDidSucceed: Bool = false
     
@@ -38,6 +49,8 @@ struct LoginView : View {
                     }
                     Button(action: {
                         print("Login button tapped")
+                        self.login()
+                        /*
                         if self.username == storedUsername && self.password == storedPassword {
                             self.authenticationDidSucceed = true
                             self.authenticationDidFail = false
@@ -46,8 +59,37 @@ struct LoginView : View {
                         else {
                             self.authenticationDidFail = true
                         }
+                        */
                     }){
                         LoginButtonContent()
+                    }
+                    Button(action: {
+                        self.isPopoverPresented = true
+                    }) {
+                        Text("Show Popover")
+                    }
+                    .popover(isPresented: $isPopoverPresented) {
+                        VStack{
+                            Spacer()
+                            Text("SignUp")
+                                .font(.largeTitle)
+                            Spacer()
+                            TextField("Username", text: $signUpUsername)
+                                .padding()
+                                .background(lightGreyColor)
+                                .cornerRadius(5.0)
+                                .padding(.bottom, 20)
+                            SecureField("Password", text: $signUpPassword)
+                                .padding()
+                                .background(lightGreyColor)
+                                .cornerRadius(5.0)
+                                .padding(.bottom, 20)
+                            Button(action: self.signUp) {
+                                Text("Register")
+                            }
+                        }
+                        .padding()
+                        .frame(width:500, height: 500)
                     }
                 }
                 .padding()
@@ -63,6 +105,38 @@ struct LoginView : View {
             }
         }
         .navigationViewStyle(StackNavigationViewStyle())
+    }
+    
+    func login(){
+        Auth.auth().signIn(withEmail: self.username, password: self.password)
+        { (user, error) in
+            if user != nil {
+                print("login success")
+                print(user)
+                self.authenticationDidSucceed = true
+                self.authenticationDidFail = false
+                self.action = 1
+            }
+            else {
+                print(error)
+                self.authenticationDidFail = true
+            }
+        }
+    }
+    
+    func signUp(){
+        Auth.auth().createUser(withEmail: self.signUpUsername, password: self.signUpPassword)
+        { (user, error) in
+            if(user != nil){
+                print("register successs")
+                print(user)
+            }
+            else{
+                print("register failed")
+                
+            }
+            
+        }
     }
 }
 

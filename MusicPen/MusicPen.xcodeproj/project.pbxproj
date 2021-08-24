@@ -11,7 +11,6 @@
 		A21868D426C76137008D2FB0 /* GoogleService-Info.plist in Resources */ = {isa = PBXBuildFile; fileRef = A21868D326C76137008D2FB0 /* GoogleService-Info.plist */; };
 		A2FB630D26C75F9200D9D939 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = A2FB630C26C75F9200D9D939 /* AppDelegate.swift */; };
 		A2FB630F26C75F9200D9D939 /* SceneDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = A2FB630E26C75F9200D9D939 /* SceneDelegate.swift */; };
-		A2FB631126C75F9200D9D939 /* ContentView.swift in Sources */ = {isa = PBXBuildFile; fileRef = A2FB631026C75F9200D9D939 /* ContentView.swift */; };
 		A2FB631326C75F9300D9D939 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = A2FB631226C75F9300D9D939 /* Assets.xcassets */; };
 		A2FB631626C75F9300D9D939 /* Preview Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = A2FB631526C75F9300D9D939 /* Preview Assets.xcassets */; };
 		A2FB631926C75F9300D9D939 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = A2FB631726C75F9300D9D939 /* LaunchScreen.storyboard */; };
@@ -27,7 +26,6 @@
 		A2FB630926C75F9200D9D939 /* MusicPen.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = MusicPen.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		A2FB630C26C75F9200D9D939 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		A2FB630E26C75F9200D9D939 /* SceneDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SceneDelegate.swift; sourceTree = "<group>"; };
-		A2FB631026C75F9200D9D939 /* ContentView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ContentView.swift; sourceTree = "<group>"; };
 		A2FB631226C75F9300D9D939 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		A2FB631526C75F9300D9D939 /* Preview Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = "Preview Assets.xcassets"; sourceTree = "<group>"; };
 		A2FB631826C75F9300D9D939 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
@@ -81,7 +79,6 @@
 			children = (
 				A2FB630C26C75F9200D9D939 /* AppDelegate.swift */,
 				A2FB630E26C75F9200D9D939 /* SceneDelegate.swift */,
-				A2FB631026C75F9200D9D939 /* ContentView.swift */,
 				A2FB632126C75FBF00D9D939 /* LoginView.swift */,
 				A2FB632326C75FBF00D9D939 /* MusicEditView.swift */,
 				A2FB632226C75FBF00D9D939 /* MusicListView.swift */,
@@ -231,7 +228,6 @@
 				A2FB632626C75FBF00D9D939 /* MusicListView.swift in Sources */,
 				A2FB630F26C75F9200D9D939 /* SceneDelegate.swift in Sources */,
 				A2FB632526C75FBF00D9D939 /* LoginView.swift in Sources */,
-				A2FB631126C75F9200D9D939 /* ContentView.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

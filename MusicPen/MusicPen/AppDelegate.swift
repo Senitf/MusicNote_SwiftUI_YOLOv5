@@ -7,29 +7,17 @@
 
 import UIKit
 import Firebase
-import GoogleSignIn
 
 @main
 class AppDelegate: UIResponder, UIApplicationDelegate {
 
-
-
     func application(_ application: UIApplication, didFinishLaunchingWithOptions launchOptions: [UIApplication.LaunchOptionsKey: Any]?) -> Bool {
         // Override point for customization after application launch.
-        FirebaseApp.configure() // 제대로 로그인되었는지 확인하기
-        GIDSignIn.sharedInstance.clientID = FirebaseApp.defaultApp()?.options.clientID
-        if let user = Auth.auth().currentUser {
-            print("You're sign in as \(user.uid), email: \(user.email ?? "no email")")
-        }
+        FirebaseApp.configure()
         return true
     }
 
     // MARK: UISceneSession Lifecycle
-    
-    // 인증 절차의 마지막에 받은 URL을 처리하기 위해서 필요한 메서드입니다.
-    func application(_ app: UIApplication, open url: URL, options: [UIApplication.OpenURLOptionsKey : Any] = [:]) -> Bool {
-        return GIDSignIn.sharedInstance.handle(url)
-    }
 
     func application(_ application: UIApplication, configurationForConnecting connectingSceneSession: UISceneSession, options: UIScene.ConnectionOptions) -> UISceneConfiguration {
         // Called when a new scene session is being created.
