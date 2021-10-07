@@ -12,6 +12,8 @@
 ## 개발 언어 및 플랫폼
 - SwiftUI
 - Xcode
+- Python
+- Pycharm
 
 ## 릴리즈 노트
 ```
