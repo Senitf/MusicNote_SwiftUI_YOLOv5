@@ -44,7 +44,7 @@ struct MusicEditView: View {
     
     @State private var canvasView = PKCanvasView(frame: .init(x:0, y:0, width:400.0, height: 100.0))
     
-    @State private var outputImage: Image("blank.png")
+    @State private var outputImage:Image = Image("blank.png")
     
     let imgRect = CGRect(x:0, y:0, width:400.0, height:100.0)
     
@@ -85,7 +85,7 @@ struct MusicEditView: View {
                                         currentBar = i * 4 + j
                                         print("Popover toggled")
                                         if showingPopover {
-                                            self.saveSignature()
+                                            outputImage = self.saveSignature()
                                             print("pic saved")
                                         }
                                         showingPopover.toggle()
@@ -94,9 +94,10 @@ struct MusicEditView: View {
                             }
                         }
                     }
-                    outputImage?
+                    outputImage
                         .resizable()
                         .border(Color.gray, width:5)
+                        .frame(width: 640, height: 640, alignment: .center)
                 }
                 .frame(
                     minWidth: 0,
@@ -109,7 +110,7 @@ struct MusicEditView: View {
                 .contentShape(Rectangle())
                 .onTapGesture {
                     if showingPopover {
-                        self.saveSignature()
+                        outputImage = self.saveSignature()
                         print("pic saved")
                     }
                     showingPopover.toggle()
@@ -147,38 +148,44 @@ struct MusicEditView: View {
         return documentsDirectory
     }
     
-    func saveSignature(){
+    func saveSignature() -> Image{
         let inferencer = ObjectDetector()
         let image = canvasView.drawing.image(from: imgRect, scale: 1.0)
-        var imageView: UIImageView!
-        var tmpUIImage:UIImage? = UIImage(named: "blank.png")
-        imageView.image = tmpUIImage
-        imageView.frame.size.width = 640
-        imageView.frame.size.height = 640
+        var imageView:UIImageView?
+        var tmpUIImage:UIImage?
+        if let tmp = UIImage(named: "blank.png"){
+            tmpUIImage = tmp
+            imageView = UIImageView(image: tmpUIImage)
+        }
         let imgScaleX = Double(image.size.width / CGFloat(PrePostProcessor.inputWidth))
         let imgScaleY = Double(image.size.height / CGFloat(PrePostProcessor.inputHeight))
-        let ivScaleX : Double = (image.size.width > image.size.height ? Double(imageView.frame.size.width / image.size.width) : Double(imageView.frame.size.height / image.size.height))
-        let ivScaleY : Double = (image.size.height > image.size.width ? Double(imageView.frame.size.height / image.size.height) : Double(imageView.frame.size.width / image.size.width))
-        let startX = Double((imageView.frame.size.width - CGFloat(ivScaleX) * image.size.width)/2)
-        let startY = Double((imageView.frame.size.height -  CGFloat(ivScaleY) * image.size.height)/2)
-        if let data = image.resized(from: CGSize(width: 640, height: 160), to: CGSize(width: 640, height: 640)).pngData() {
+        let ivScaleX : Double = (image.size.width > image.size.height ? Double(640.0 / image.size.width) : Double(640.0 / image.size.height))
+        let ivScaleY : Double = (image.size.height > image.size.width ? Double(640.0 / image.size.height) : Double(640.0 / image.size.width))
+        let startX = Double((640.0 - CGFloat(ivScaleX) * image.size.width)/2)
+        let startY = Double((640.0 -  CGFloat(ivScaleY) * image.size.height)/2)
+        if let data = image.resized(from: CGSize(width: 640, height: 160), to: CGSize(width: 640, height: 640)).pngData(), let tmpimageView = imageView{
         //if let data = image.pngData() {
             let filename = getDocumentsDirectory().appendingPathComponent("\(self.dateFormatter.string(from: self.today)).png")
             try? data.write(to: filename)
             let resizedImage = image.resized(from: CGSize(width: 640, height: 160), to: CGSize(width: 640, height: 640))
             print(filename)
             guard var pixelBuffer = resizedImage.normalized() else {
-                return
+                print("exception 1")
+                return Image("blank.png")
             }
             guard let outputs = inferencer.module.detect(image: &pixelBuffer) else {
-                return
+                print("exception 2")
+                return Image("blank.png")
             }
             let nmsPredictions = PrePostProcessor.outputsToNMSPredictions(outputs: outputs, imgScaleX: imgScaleX, imgScaleY: imgScaleY, ivScaleX: ivScaleX, ivScaleY: ivScaleY, startX: startX, startY: startY)
-            PrePostProcessor.showDetection(imageView: imageView, nmsPredictions: nmsPredictions, classes: inferencer.classes)
-            let ui:UIImage = imageView.image!
-            outputImage = Image(uiImage: ui)
-            print(nmsPredictions)
+            PrePostProcessor.showDetection(imageView: tmpimageView, nmsPredictions: nmsPredictions, classes: inferencer.classes)
+            if let tmptmp = tmpimageView.image{
+                print(nmsPredictions)
+                return Image(uiImage: tmptmp)
+            }
         }
+        print("exception 3")
+        return Image("blank.png")
     }
 }
 
