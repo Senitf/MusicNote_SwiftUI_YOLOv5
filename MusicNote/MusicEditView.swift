@@ -10,6 +10,7 @@ import SwiftUI
 import PencilKit
 import UIKit.UIGestureRecognizerSubclass
 import Foundation
+import Firebase
 
 class ObjectDetector {
 
@@ -44,12 +45,9 @@ struct MusicEditView: View {
     
     @State private var canvasView = PKCanvasView(frame: .init(x:0, y:0, width:400.0, height: 100.0))
     
-    @State var outputImage:Image = Image("blank")
+    @State var outputImage:Image?
     
-    /*
-    @State var imageView:UIImageView?
-    @State var tmpUIImage:UIImage?
-    */
+    //lazy var rootRef = Database.database().reference()
     
     let imgRect = CGRect(x:0, y:0, width:640.0, height:640.0)
     
@@ -63,6 +61,44 @@ struct MusicEditView: View {
     var body: some View {
             ZStack{
                 VStack{
+                    HStack{
+                        if currentBar == -1 {
+                            Text("Current Bar : Not selected")
+                                .font(Font.custom("Multilingual Hand", size: 20))
+                        }
+                        else {
+                            Text("Current Bar : " + String(currentBar))
+                                .font(Font.custom("Multilingual Hand", size: 20))
+                        }
+                        Spacer()
+                        Button("Clear") {
+                            canvasView.drawing = PKDrawing()
+                        }
+                        .foregroundColor(Color.black)
+                        .font(Font.custom("Multilingual Hand", size: 20))
+                        Button("Undo") {
+                            undoManage?.undo()
+                        }
+                        .foregroundColor(Color.black)
+                        .font(Font.custom("Multilingual Hand", size: 20))
+                        Button("Redo") {
+                            undoManage?.redo()
+                        }
+                        .foregroundColor(Color.black)
+                        .font(Font.custom("Multilingual Hand", size: 20))
+                        Button("New") {
+                            
+                        }
+                        .foregroundColor(Color.black)
+                        .font(Font.custom("Multilingual Hand", size: 20))
+                    }//menubar
+                    .padding(20)
+                    .overlay(RoundedRectangle(cornerRadius: 20)
+                                .stroke(Color.black, lineWidth: 2))
+                    Text(MusicTitle)
+                        .font(Font.custom("Multilingual Hand", size: 32))
+                        .padding(20)
+                    
                     ForEach(0 ..< MusicBar){ i in
                         HStack{
                             ForEach(0 ..< 4, id: \.self){ j in
@@ -87,22 +123,27 @@ struct MusicEditView: View {
                                     .padding(.bottom, 25)
                                     .tag(i * 4 + j)
                                     .onTapGesture {
-                                        currentBar = i * 4 + j
-                                        print("Popover toggled")
                                         if showingPopover {
                                             outputImage = self.saveSignature()
-                                            print("pic saved")
+                                        }
+                                        
+                                        else {
+                                            currentBar = i * 4 + j
+                                            outputImage = nil
+                                            canvasView.drawing = PKDrawing()
                                         }
                                         showingPopover.toggle()
+                                        //showingPopover = true
                                     }
                                 }
                             }
                         }
                     }
-                    outputImage
+                    outputImage?
                         .resizable()
                         .border(Color.gray, width:5)
                         .frame(width: 640, height: 640, alignment: .center)
+                    Spacer()
                 }
                 .frame(
                     minWidth: 0,
@@ -116,33 +157,38 @@ struct MusicEditView: View {
                 .onTapGesture {
                     if showingPopover {
                         outputImage = self.saveSignature()
-                        print("pic saved")
+                    }
+                    else {
+                        outputImage = nil
+                        canvasView.drawing = PKDrawing()
                     }
                     showingPopover.toggle()
                 }
                 if showingPopover {
-                    VStack{
-                        HStack{
-                            Text(String(currentBar))
-                            Button("Clear") {
-                                canvasView.drawing = PKDrawing()
-                            }
-                            Button("Undo") {
-                                undoManage?.undo()
-                            }
-                            Button("Redo") {
-                                undoManage?.redo()
-                            }
-                            Button("New") {}
-                        }
-                        .padding()
+                    ZStack{
                         MyCanvas(canvasView: $canvasView)
                             .frame(width: 640.0, height: 160.0, alignment: .leading)
-                            .border(Color.gray, width:5)
-                            .background(Color.white)
+                            .background(Color.white.opacity(0))
+                            .padding(20)
+                            .overlay(RoundedRectangle(cornerRadius: 20)
+                                        .stroke(Color.black, lineWidth: 2))
+                        Path { path in
+                            path.move(to: CGPoint(x:0, y:10))
+                            path.addLine(to: CGPoint(x:640, y:10))
+                            path.move(to: CGPoint(x:0, y:45))
+                            path.addLine(to: CGPoint(x:640, y:45))
+                            path.move(to: CGPoint(x:0, y:80))
+                            path.addLine(to: CGPoint(x:640, y:80))
+                            path.move(to: CGPoint(x:0, y:115))
+                            path.addLine(to: CGPoint(x:640, y:115))
+                            path.move(to: CGPoint(x:0, y:150))
+                            path.addLine(to: CGPoint(x:640, y:150))
+                            path.move(to: CGPoint(x:640, y:10))
+                            path.addLine(to: CGPoint(x:640, y:150))
+                        }
+                        .stroke(Color.black, lineWidth: 2)
+                        .frame(width: 640.0, height: 160.0, alignment: .center)
                     }
-                    .border(Color.gray, width:5)
-                    .background(Color.white)
                 }
             }
     }
@@ -236,6 +282,6 @@ struct MyCanvas: UIViewRepresentable {
 //Preview
 struct MusicEditView_Previews: PreviewProvider {
     static var previews: some View {
-        MusicEditView(MusicTitle: .constant("Sample Music Title"), MusicBar: .constant(1))
+        MusicEditView(MusicTitle: .constant("Sample Music Title"), MusicBar: .constant(2))
     }
 }

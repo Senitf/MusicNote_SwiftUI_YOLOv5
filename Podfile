@@ -7,5 +7,6 @@ target 'MusicNote' do
 
   # Pods for MusicNote
   pod 'Firebase/Auth'
+  pod 'Firebase/Database'
   pod 'LibTorch-Lite'
 end

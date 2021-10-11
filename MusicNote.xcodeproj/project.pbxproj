@@ -9,6 +9,7 @@
 /* Begin PBXBuildFile section */
 		8FE2E2BF4A6623182BB5BC85 /* Pods_MusicNote.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 1DC59726B6F2188736268DF2 /* Pods_MusicNote.framework */; };
 		A2203845270A9DA00026C30F /* model640x640.pt in Resources */ = {isa = PBXBuildFile; fileRef = A2203844270A9DA00026C30F /* model640x640.pt */; };
+		A226189D2714197F00092F5F /* hand.ttf in Resources */ = {isa = PBXBuildFile; fileRef = A226189C2714197F00092F5F /* hand.ttf */; };
 		A2517B6D27007A57009E14F7 /* MusicEditView.swift in Sources */ = {isa = PBXBuildFile; fileRef = A2517B6C27007A57009E14F7 /* MusicEditView.swift */; };
 		A2517B7027007A66009E14F7 /* MusicListView.swift in Sources */ = {isa = PBXBuildFile; fileRef = A2517B6E27007A66009E14F7 /* MusicListView.swift */; };
 		A2517B7127007A66009E14F7 /* LoginView.swift in Sources */ = {isa = PBXBuildFile; fileRef = A2517B6F27007A66009E14F7 /* LoginView.swift */; };
@@ -30,6 +31,7 @@
 		1DC59726B6F2188736268DF2 /* Pods_MusicNote.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_MusicNote.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		282499E1F0E5C62AF55D80F4 /* Pods-MusicNote.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-MusicNote.debug.xcconfig"; path = "Target Support Files/Pods-MusicNote/Pods-MusicNote.debug.xcconfig"; sourceTree = "<group>"; };
 		A2203844270A9DA00026C30F /* model640x640.pt */ = {isa = PBXFileReference; lastKnownFileType = file; path = model640x640.pt; sourceTree = "<group>"; };
+		A226189C2714197F00092F5F /* hand.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; path = hand.ttf; sourceTree = "<group>"; };
 		A24503AE270081F300AF568D /* MusicNote-Bridging-Header.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = "MusicNote-Bridging-Header.h"; sourceTree = "<group>"; };
 		A2517B6C27007A57009E14F7 /* MusicEditView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MusicEditView.swift; sourceTree = "<group>"; };
 		A2517B6E27007A66009E14F7 /* MusicListView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MusicListView.swift; sourceTree = "<group>"; };
@@ -46,6 +48,7 @@
 		A28EF43F270077D6005E75AE /* ContentView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ContentView.swift; sourceTree = "<group>"; };
 		A28EF441270077D7005E75AE /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		A28EF444270077D7005E75AE /* Preview Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = "Preview Assets.xcassets"; sourceTree = "<group>"; };
+		A293AF1E2714263C0009EA16 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist; path = Info.plist; sourceTree = "<group>"; };
 		A29942D7271297EE0074B5DA /* testView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = testView.swift; sourceTree = "<group>"; };
 		A29942DD2712A3C70074B5DA /* output.txt */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = output.txt; sourceTree = "<group>"; };
 		BA19BB9EB532E1A1E7FF8CE2 /* Pods-MusicNote.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-MusicNote.release.xcconfig"; path = "Target Support Files/Pods-MusicNote/Pods-MusicNote.release.xcconfig"; sourceTree = "<group>"; };
@@ -78,6 +81,14 @@
 				BA19BB9EB532E1A1E7FF8CE2 /* Pods-MusicNote.release.xcconfig */,
 			);
 			path = Pods;
+			sourceTree = "<group>";
+		};
+		A226189B2714196A00092F5F /* font */ = {
+			isa = PBXGroup;
+			children = (
+				A226189C2714197F00092F5F /* hand.ttf */,
+			);
+			path = font;
 			sourceTree = "<group>";
 		};
 		A279A3A5270D0D2A003BAD3E /* util */ = {
@@ -131,6 +142,8 @@
 		A28EF43C270077D6005E75AE /* MusicNote */ = {
 			isa = PBXGroup;
 			children = (
+				A293AF1E2714263C0009EA16 /* Info.plist */,
+				A226189B2714196A00092F5F /* font */,
 				A279A3A5270D0D2A003BAD3E /* util */,
 				A28D06052705EA2600B0D668 /* InferenceModule */,
 				A28D06042705EA1200B0D668 /* model */,
@@ -221,6 +234,7 @@
 				A28EF442270077D7005E75AE /* Assets.xcassets in Resources */,
 				A29942DE2712A3C70074B5DA /* output.txt in Resources */,
 				A2517B7327007E72009E14F7 /* GoogleService-Info.plist in Resources */,
+				A226189D2714197F00092F5F /* hand.ttf in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -420,6 +434,7 @@
 				ENABLE_BITCODE = NO;
 				ENABLE_PREVIEWS = YES;
 				GENERATE_INFOPLIST_FILE = YES;
+				INFOPLIST_FILE = MusicNote/Info.plist;
 				INFOPLIST_KEY_UIApplicationSceneManifest_Generation = YES;
 				INFOPLIST_KEY_UIApplicationSupportsIndirectInputEvents = YES;
 				INFOPLIST_KEY_UILaunchScreen_Generation = YES;
@@ -456,6 +471,7 @@
 				ENABLE_BITCODE = NO;
 				ENABLE_PREVIEWS = YES;
 				GENERATE_INFOPLIST_FILE = YES;
+				INFOPLIST_FILE = MusicNote/Info.plist;
 				INFOPLIST_KEY_UIApplicationSceneManifest_Generation = YES;
 				INFOPLIST_KEY_UIApplicationSupportsIndirectInputEvents = YES;
 				INFOPLIST_KEY_UILaunchScreen_Generation = YES;
