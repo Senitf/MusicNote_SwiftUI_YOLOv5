@@ -17,7 +17,7 @@ struct MusicNoteApp: App {
     var body: some Scene {
         WindowGroup {
             //LoginView()
-            MusicEditView(MusicTitle: .constant("Sample Music Title"), MusicBar: .constant(2))
+            MusicEditView(MusicTitle: .constant("Sample Music Title"), MusicBar: .constant(10))
             //testView()
         }
     }

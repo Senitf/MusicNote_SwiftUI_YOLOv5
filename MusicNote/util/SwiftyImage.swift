@@ -70,8 +70,10 @@ public func mergeImg(lhs: UIImage, rhs: UIImage, rect: CGRect) -> UIImage{
       var rhsRect = CGRect(x: 0, y: 0, width: rhs.size.width, height: rhs.size.height)
 
       if lhsRect.contains(rhsRect) {
-        rhsRect.origin.x = (lhsRect.size.width - rhsRect.size.width) / 2
-        rhsRect.origin.y = (lhsRect.size.height - rhsRect.size.height) / 2
+        //rhsRect.origin.x = (lhsRect.size.width - rhsRect.size.width) / 2
+        //rhsRect.origin.y = (lhsRect.size.height - rhsRect.size.height) / 2
+          rhsRect.origin.x = rect.maxX
+          rhsRect.origin.y = rect.maxY
       } else {
         rhsRect.size = lhsRect.size
       }

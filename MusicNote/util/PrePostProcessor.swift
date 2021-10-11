@@ -23,7 +23,7 @@ class PrePostProcessor : NSObject {
     static let outputRow = 25200 // as decided by the YOLOv5 model for input image of size 640*640
     static let outputColumn = 42 // left, top, right, bottom, score and 80 class probability
     static let threshold : Float = 0.35 // score above which a detection is generated
-    static let nmsLimit = 15 // max number of detections
+    static let nmsLimit = 10 // max number of detections
     
     // The two methods nonMaxSuppression and IOU below are from  https://github.com/hollance/YOLO-CoreML-MPSNNGraph/blob/master/Common/Helpers.swift
     /**

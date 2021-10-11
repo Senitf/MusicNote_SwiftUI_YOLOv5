@@ -61,7 +61,7 @@ struct MusicEditView: View {
     var body: some View {
             ZStack{
                 VStack{
-                    HStack{
+                    HStack{ //메뉴 바 항목들
                         if currentBar == -1 {
                             Text("Current Bar : Not selected")
                                 .font(Font.custom("Multilingual Hand", size: 20))
@@ -91,18 +91,18 @@ struct MusicEditView: View {
                         }
                         .foregroundColor(Color.black)
                         .font(Font.custom("Multilingual Hand", size: 20))
-                    }//menubar
+                    }
+                    .frame(minWidth: 0, maxWidth: 800, minHeight: 0, maxHeight: 30)
                     .padding(20)
                     .overlay(RoundedRectangle(cornerRadius: 20)
-                                .stroke(Color.black, lineWidth: 2))
-                    Text(MusicTitle)
-                        .font(Font.custom("Multilingual Hand", size: 32))
-                        .padding(20)
-                    
-                    ForEach(0 ..< MusicBar){ i in
-                        HStack{
-                            ForEach(0 ..< 4, id: \.self){ j in
-                                ZStack{
+                                .stroke(Color.black, lineWidth: 1))
+                    ScrollView(showsIndicators: false){
+                        Text(MusicTitle) //악보 타이틀
+                            .font(Font.custom("Multilingual Hand", size: 32))
+                            .padding(20)
+                        ForEach(0 ..< MusicBar){ i in
+                            HStack{
+                                ForEach(0 ..< 4, id: \.self){ j in
                                     Path { path in
                                         path.move(to: CGPoint(x:0, y:10))
                                         path.addLine(to: CGPoint(x:250, y:10))
@@ -123,6 +123,7 @@ struct MusicEditView: View {
                                     .padding(.bottom, 25)
                                     .tag(i * 4 + j)
                                     .onTapGesture {
+                                        /*
                                         if showingPopover {
                                             outputImage = self.saveSignature()
                                         }
@@ -133,17 +134,23 @@ struct MusicEditView: View {
                                             canvasView.drawing = PKDrawing()
                                         }
                                         showingPopover.toggle()
-                                        //showingPopover = true
+                                         */
+                                        if !showingPopover{
+                                            showingPopover = true
+                                        }
+                                        currentBar = i * 4 + j
+                                        outputImage = nil
+                                        canvasView.drawing = PKDrawing()
                                     }
                                 }
                             }
                         }
+                        outputImage?
+                            .resizable()
+                            .border(Color.gray, width:5)
+                            .frame(width: 640, height: 640, alignment: .center)
+                        Spacer()
                     }
-                    outputImage?
-                        .resizable()
-                        .border(Color.gray, width:5)
-                        .frame(width: 640, height: 640, alignment: .center)
-                    Spacer()
                 }
                 .frame(
                     minWidth: 0,
@@ -189,6 +196,7 @@ struct MusicEditView: View {
                         .stroke(Color.black, lineWidth: 2)
                         .frame(width: 640.0, height: 160.0, alignment: .center)
                     }
+                    .background(Color.white)
                 }
             }
     }
@@ -209,10 +217,7 @@ struct MusicEditView: View {
             tmpUIImage = tmp
             imageView = UIImageView(image: tmpUIImage)
         }
-        /*
-        imageView?.frame.size.height = 640
-        imageView?.frame.size.width = 640
-        */
+        
         
         let imgScaleX = Double(image.size.width / CGFloat(PrePostProcessor.inputWidth))
         let imgScaleY = Double(image.size.height / CGFloat(PrePostProcessor.inputHeight))
