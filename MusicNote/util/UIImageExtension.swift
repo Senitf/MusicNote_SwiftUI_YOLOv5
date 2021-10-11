@@ -9,16 +9,15 @@ import Foundation
 import UIKit
 
 extension UIImage {
-    func resized(from prevSize: CGSize, to newSize: CGSize, scale: CGFloat = 1) -> UIImage {
-        let format = UIGraphicsImageRendererFormat.default()
-        format.scale = scale
-        let renderer = UIGraphicsImageRenderer(size: newSize, format: format)
-        let image = renderer.image { _ in
-            //draw(in: CGRect(origin: .zero, size: newSize))
-            draw(in: CGRect(origin: .zero, size: prevSize))
+    func resized(to newSize: CGSize, scale: CGFloat = 1) -> UIImage {
+            let format = UIGraphicsImageRendererFormat.default()
+            format.scale = scale
+            let renderer = UIGraphicsImageRenderer(size: newSize, format: format)
+            let image = renderer.image { _ in
+                draw(in: CGRect(origin: .zero, size: newSize))
+            }
+            return image
         }
-        return image
-    }
     
     func normalized() -> [Float32]? {
         guard let cgImage = self.cgImage else {

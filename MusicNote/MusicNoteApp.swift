@@ -18,6 +18,7 @@ struct MusicNoteApp: App {
         WindowGroup {
             //LoginView()
             MusicEditView(MusicTitle: .constant("Sample Music Title"), MusicBar: .constant(2))
+            //testView()
         }
     }
 }

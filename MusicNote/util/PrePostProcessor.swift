@@ -134,13 +134,16 @@ class PrePostProcessor : NSObject {
         }
     }
 
-    static func showDetection(imageView: UIImageView, nmsPredictions: [Prediction], classes: [String]) {
+    static func showDetection(imageView: UIImageView, nmsPredictions: [Prediction], classes: [String]) -> UIImage{
+        var result:UIImage? = imageView.image
         for pred in nmsPredictions {
             let bbox = UIView(frame: pred.rect)
             bbox.backgroundColor = UIColor.clear
-            bbox.layer.borderColor = UIColor.yellow.cgColor
+            bbox.layer.borderColor = UIColor.magenta.cgColor
             bbox.layer.borderWidth = 2
             imageView.addSubview(bbox)
+            
+            print(pred.rect)
             
             let textLayer = CATextLayer()
             textLayer.string = String(format: " %@ %.2f", classes[pred.classIndex], pred.score)
@@ -149,7 +152,18 @@ class PrePostProcessor : NSObject {
             textLayer.fontSize = 14
             textLayer.frame = CGRect(x: pred.rect.origin.x, y: pred.rect.origin.y, width:100, height:20)
             imageView.layer.addSublayer(textLayer)
+            
+            
+            let bboxImage:UIImage? = bbox.asUIImage()
+            //result = result! + bboxImage!
+            result = mergeImg(lhs: result!, rhs: bboxImage!, rect: pred.rect)
+            
         }
+        /*
+        let bboxImage:UIImage? = imageView.image
+        result = result! + bboxImage!
+        */
+        return result!
     }
 
 }

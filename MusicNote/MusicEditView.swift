@@ -44,9 +44,14 @@ struct MusicEditView: View {
     
     @State private var canvasView = PKCanvasView(frame: .init(x:0, y:0, width:400.0, height: 100.0))
     
-    @State private var outputImage:Image = Image("blank.png")
+    @State var outputImage:Image = Image("blank")
     
-    let imgRect = CGRect(x:0, y:0, width:400.0, height:100.0)
+    /*
+    @State var imageView:UIImageView?
+    @State var tmpUIImage:UIImage?
+    */
+    
+    let imgRect = CGRect(x:0, y:0, width:640.0, height:640.0)
     
     let today = Date()
     var dateFormatter: DateFormatter {
@@ -153,39 +158,65 @@ struct MusicEditView: View {
         let image = canvasView.drawing.image(from: imgRect, scale: 1.0)
         var imageView:UIImageView?
         var tmpUIImage:UIImage?
+        
         if let tmp = UIImage(named: "blank.png"){
             tmpUIImage = tmp
             imageView = UIImageView(image: tmpUIImage)
         }
+        /*
+        imageView?.frame.size.height = 640
+        imageView?.frame.size.width = 640
+        */
+        
         let imgScaleX = Double(image.size.width / CGFloat(PrePostProcessor.inputWidth))
         let imgScaleY = Double(image.size.height / CGFloat(PrePostProcessor.inputHeight))
         let ivScaleX : Double = (image.size.width > image.size.height ? Double(640.0 / image.size.width) : Double(640.0 / image.size.height))
         let ivScaleY : Double = (image.size.height > image.size.width ? Double(640.0 / image.size.height) : Double(640.0 / image.size.width))
         let startX = Double((640.0 - CGFloat(ivScaleX) * image.size.width)/2)
         let startY = Double((640.0 -  CGFloat(ivScaleY) * image.size.height)/2)
-        if let data = image.resized(from: CGSize(width: 640, height: 160), to: CGSize(width: 640, height: 640)).pngData(), let tmpimageView = imageView{
+        
+        /*
+        let imgScaleX = 1.0
+        let imgScaleY = 1.0
+        let ivScaleX = 1.0
+        let ivScaleY = 1.0
+        let startX = 0.0
+        let startY = 0.0
+        */
+        
+        if let data = image.pngData(){
         //if let data = image.pngData() {
+            
             let filename = getDocumentsDirectory().appendingPathComponent("\(self.dateFormatter.string(from: self.today)).png")
             try? data.write(to: filename)
-            let resizedImage = image.resized(from: CGSize(width: 640, height: 160), to: CGSize(width: 640, height: 640))
+            /*
+            let resizedImage = image.resized(to: CGSize(width: 640, height: 640))
             print(filename)
             guard var pixelBuffer = resizedImage.normalized() else {
                 print("exception 1")
-                return Image("blank.png")
+                return Image("blank")
+            }
+             */
+            guard var pixelBuffer = image.normalized() else {
+                print("exception 1")
+                return Image("blank")
             }
             guard let outputs = inferencer.module.detect(image: &pixelBuffer) else {
                 print("exception 2")
-                return Image("blank.png")
+                return Image("blank")
             }
+            
+            imageView?.image = image
+            
             let nmsPredictions = PrePostProcessor.outputsToNMSPredictions(outputs: outputs, imgScaleX: imgScaleX, imgScaleY: imgScaleY, ivScaleX: ivScaleX, ivScaleY: ivScaleY, startX: startX, startY: startY)
-            PrePostProcessor.showDetection(imageView: tmpimageView, nmsPredictions: nmsPredictions, classes: inferencer.classes)
-            if let tmptmp = tmpimageView.image{
-                print(nmsPredictions)
-                return Image(uiImage: tmptmp)
-            }
+            let result = PrePostProcessor.showDetection(imageView: imageView!, nmsPredictions: nmsPredictions, classes: inferencer.classes)
+            
+            print(nmsPredictions)
+            //print(inferencer.classes)
+            return Image(uiImage: result)
         }
         print("exception 3")
-        return Image("blank.png")
+        return Image("blank")
     }
 }
 
