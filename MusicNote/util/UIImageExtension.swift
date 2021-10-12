@@ -59,9 +59,9 @@ extension UIImage {
             g = Float32(rawBytes[i * 4 + 1])
             b = Float32(rawBytes[i * 4 + 2])
             a = Float32(rawBytes[i * 4 + 3]) / 255.0
-            normalizedBuffer[i] = 255.0 - (r * a + (1.0 - a) * 255.0)
-            normalizedBuffer[w * h + i] = 255.0 - (g * a + (1.0 - a) * 255.0)
-            normalizedBuffer[w * h * 2 + i] = 255.0 - (b * a + (1.0 - a) * 255.0)
+            normalizedBuffer[i] = (255.0 - (r * a + (1.0 - a) * 255.0)) / 255.0
+            normalizedBuffer[w * h + i] = (255.0 - (g * a + (1.0 - a) * 255.0)) / 255.0
+            normalizedBuffer[w * h * 2 + i] = (255.0 - (b * a + (1.0 - a) * 255.0)) / 255.0
         }
         return normalizedBuffer
     }

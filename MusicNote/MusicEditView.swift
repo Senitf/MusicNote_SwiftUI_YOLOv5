@@ -11,11 +11,13 @@ import PencilKit
 import UIKit.UIGestureRecognizerSubclass
 import Foundation
 import Firebase
+import FirebaseDatabase
 
 class ObjectDetector {
 
     lazy var module: InferenceModule = {
         if let filePath = Bundle.main.path(forResource: "model640x640", ofType: "pt"),
+        //if let filePath = Bundle.main.path(forResource: "model", ofType: "pt"),
             let module = InferenceModule(fileAtPath: filePath) {
             return module
         }else {
@@ -37,6 +39,8 @@ struct MusicEditView: View {
     @Binding var MusicTitle:String
     @Binding var MusicBar:Int
     
+    //@State var stateMusicBar:Int = $MusicBar
+    
     @State private var showingPopover = false
     
     @State var currentBar:Int = -1
@@ -51,6 +55,8 @@ struct MusicEditView: View {
     
     let imgRect = CGRect(x:0, y:0, width:640.0, height:640.0)
     
+    var ref: DatabaseReference! = Database.database().reference()
+    
     let today = Date()
     var dateFormatter: DateFormatter {
     let formatter = DateFormatter()
@@ -61,7 +67,8 @@ struct MusicEditView: View {
     var body: some View {
             ZStack{
                 VStack{
-                    HStack{ //메뉴 바 항목들
+                    //메뉴 바 항목들
+                    HStack{
                         if currentBar == -1 {
                             Text("Current Bar : Not selected")
                                 .font(Font.custom("Multilingual Hand", size: 20))
@@ -87,7 +94,7 @@ struct MusicEditView: View {
                         .foregroundColor(Color.black)
                         .font(Font.custom("Multilingual Hand", size: 20))
                         Button("New") {
-                            
+                            MusicBar += 1
                         }
                         .foregroundColor(Color.black)
                         .font(Font.custom("Multilingual Hand", size: 20))
@@ -97,33 +104,33 @@ struct MusicEditView: View {
                     .overlay(RoundedRectangle(cornerRadius: 20)
                                 .stroke(Color.black, lineWidth: 1))
                     ScrollView(showsIndicators: false){
-                        Text(MusicTitle) //악보 타이틀
+                        //악보 타이틀
+                        Text(MusicTitle)
                             .font(Font.custom("Multilingual Hand", size: 32))
                             .padding(20)
-                        ForEach(0 ..< MusicBar){ i in
+                        ForEach(0 ..< MusicBar, id: \.self){ i in
                             HStack{
                                 ForEach(0 ..< 4, id: \.self){ j in
                                     Path { path in
                                         path.move(to: CGPoint(x:0, y:10))
-                                        path.addLine(to: CGPoint(x:250, y:10))
+                                        path.addLine(to: CGPoint(x:320, y:10))
                                         path.move(to: CGPoint(x:0, y:30))
-                                        path.addLine(to: CGPoint(x:250, y:30))
+                                        path.addLine(to: CGPoint(x:320, y:30))
                                         path.move(to: CGPoint(x:0, y:50))
-                                        path.addLine(to: CGPoint(x:250, y:50))
+                                        path.addLine(to: CGPoint(x:320, y:50))
                                         path.move(to: CGPoint(x:0, y:70))
-                                        path.addLine(to: CGPoint(x:250, y:70))
+                                        path.addLine(to: CGPoint(x:320, y:70))
                                         path.move(to: CGPoint(x:0, y:90))
-                                        path.addLine(to: CGPoint(x:250, y:90))
-                                        path.move(to: CGPoint(x:250, y:10))
-                                        path.addLine(to: CGPoint(x:250, y:90))
+                                        path.addLine(to: CGPoint(x:320, y:90))
+                                        path.move(to: CGPoint(x:320, y:10))
+                                        path.addLine(to: CGPoint(x:320, y:90))
                                     }
                                     .stroke(Color.black, lineWidth: 2)
-                                    .frame(width: 250.0, height: 100.0, alignment: .center)
-                                    .padding(.leading, -7)
-                                    .padding(.bottom, 25)
+                                    .frame(width: 320.0, height: 160.0, alignment: .center)
+                                    .padding(.leading, -77)
+                                    .padding(.bottom, 10)
                                     .tag(i * 4 + j)
                                     .onTapGesture {
-                                        /*
                                         if showingPopover {
                                             outputImage = self.saveSignature()
                                         }
@@ -134,13 +141,6 @@ struct MusicEditView: View {
                                             canvasView.drawing = PKDrawing()
                                         }
                                         showingPopover.toggle()
-                                         */
-                                        if !showingPopover{
-                                            showingPopover = true
-                                        }
-                                        currentBar = i * 4 + j
-                                        outputImage = nil
-                                        canvasView.drawing = PKDrawing()
                                     }
                                 }
                             }
@@ -164,12 +164,8 @@ struct MusicEditView: View {
                 .onTapGesture {
                     if showingPopover {
                         outputImage = self.saveSignature()
+                        showingPopover.toggle()
                     }
-                    else {
-                        outputImage = nil
-                        canvasView.drawing = PKDrawing()
-                    }
-                    showingPopover.toggle()
                 }
                 if showingPopover {
                     ZStack{
@@ -226,15 +222,6 @@ struct MusicEditView: View {
         let startX = Double((640.0 - CGFloat(ivScaleX) * image.size.width)/2)
         let startY = Double((640.0 -  CGFloat(ivScaleY) * image.size.height)/2)
         
-        /*
-        let imgScaleX = 1.0
-        let imgScaleY = 1.0
-        let ivScaleX = 1.0
-        let ivScaleY = 1.0
-        let startX = 0.0
-        let startY = 0.0
-        */
-        
         if let data = image.pngData(){
         //if let data = image.pngData() {
             
@@ -243,15 +230,12 @@ struct MusicEditView: View {
             /*
             let resizedImage = image.resized(to: CGSize(width: 640, height: 640))
             print(filename)
-            guard var pixelBuffer = resizedImage.normalized() else {
-                print("exception 1")
-                return Image("blank")
-            }
              */
-            guard var pixelBuffer = image.normalized() else {
+            guard var pixelBuffer:[Float32] = image.normalized() else {
                 print("exception 1")
                 return Image("blank")
             }
+
             guard let outputs = inferencer.module.detect(image: &pixelBuffer) else {
                 print("exception 2")
                 return Image("blank")
