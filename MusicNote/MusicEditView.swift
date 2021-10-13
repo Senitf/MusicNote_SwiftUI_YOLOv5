@@ -111,44 +111,52 @@ struct MusicEditView: View {
                         ForEach(0 ..< MusicBar, id: \.self){ i in
                             HStack{
                                 ForEach(0 ..< 4, id: \.self){ j in
-                                    Path { path in
-                                        path.move(to: CGPoint(x:0, y:10))
-                                        path.addLine(to: CGPoint(x:320, y:10))
-                                        path.move(to: CGPoint(x:0, y:30))
-                                        path.addLine(to: CGPoint(x:320, y:30))
-                                        path.move(to: CGPoint(x:0, y:50))
-                                        path.addLine(to: CGPoint(x:320, y:50))
-                                        path.move(to: CGPoint(x:0, y:70))
-                                        path.addLine(to: CGPoint(x:320, y:70))
-                                        path.move(to: CGPoint(x:0, y:90))
-                                        path.addLine(to: CGPoint(x:320, y:90))
-                                        path.move(to: CGPoint(x:320, y:10))
-                                        path.addLine(to: CGPoint(x:320, y:90))
+                                    ZStack{
+                                        outputImage?
+                                            .frame(width: 320.0, height: 100.0, alignment: .center)
+                                        Path { path in
+                                            path.move(to: CGPoint(x:0, y:10))
+                                            path.addLine(to: CGPoint(x:320, y:10))
+                                            path.move(to: CGPoint(x:0, y:30))
+                                            path.addLine(to: CGPoint(x:320, y:30))
+                                            path.move(to: CGPoint(x:0, y:50))
+                                            path.addLine(to: CGPoint(x:320, y:50))
+                                            path.move(to: CGPoint(x:0, y:70))
+                                            path.addLine(to: CGPoint(x:320, y:70))
+                                            path.move(to: CGPoint(x:0, y:90))
+                                            path.addLine(to: CGPoint(x:320, y:90))
+                                            path.move(to: CGPoint(x:320, y:10))
+                                            path.addLine(to: CGPoint(x:320, y:90))
+                                        }
+                                        .stroke(Color.black, lineWidth: 2)
+                                        .frame(width: 320.0, height: 100.0, alignment: .center)
+                                        .tag(i * 4 + j)
+                                        .onTapGesture {
+                                            if showingPopover {
+                                                outputImage = self.saveSignature()
+                                            }
+                                            
+                                            else {
+                                                currentBar = i * 4 + j
+                                                outputImage = nil
+                                                canvasView.drawing = PKDrawing()
+                                            }
+                                            showingPopover.toggle()
+                                        }
                                     }
-                                    .stroke(Color.black, lineWidth: 2)
-                                    .frame(width: 320.0, height: 160.0, alignment: .center)
+                                    /*
                                     .padding(.leading, -77)
                                     .padding(.bottom, 10)
-                                    .tag(i * 4 + j)
-                                    .onTapGesture {
-                                        if showingPopover {
-                                            outputImage = self.saveSignature()
-                                        }
-                                        
-                                        else {
-                                            currentBar = i * 4 + j
-                                            outputImage = nil
-                                            canvasView.drawing = PKDrawing()
-                                        }
-                                        showingPopover.toggle()
-                                    }
+                                     */
                                 }
                             }
                         }
+                        /*
                         outputImage?
                             .resizable()
                             .border(Color.gray, width:5)
                             .frame(width: 640, height: 640, alignment: .center)
+                        */
                         Spacer()
                     }
                 }
@@ -170,27 +178,27 @@ struct MusicEditView: View {
                 if showingPopover {
                     ZStack{
                         MyCanvas(canvasView: $canvasView)
-                            .frame(width: 640.0, height: 160.0, alignment: .leading)
+                            .frame(width: 640.0, height: 200.0, alignment: .leading)
                             .background(Color.white.opacity(0))
                             .padding(20)
                             .overlay(RoundedRectangle(cornerRadius: 20)
                                         .stroke(Color.black, lineWidth: 2))
                         Path { path in
-                            path.move(to: CGPoint(x:0, y:10))
-                            path.addLine(to: CGPoint(x:640, y:10))
-                            path.move(to: CGPoint(x:0, y:45))
-                            path.addLine(to: CGPoint(x:640, y:45))
-                            path.move(to: CGPoint(x:0, y:80))
-                            path.addLine(to: CGPoint(x:640, y:80))
-                            path.move(to: CGPoint(x:0, y:115))
-                            path.addLine(to: CGPoint(x:640, y:115))
-                            path.move(to: CGPoint(x:0, y:150))
-                            path.addLine(to: CGPoint(x:640, y:150))
-                            path.move(to: CGPoint(x:640, y:10))
-                            path.addLine(to: CGPoint(x:640, y:150))
+                            path.move(to: CGPoint(x:0, y:20))
+                            path.addLine(to: CGPoint(x:640, y:20))
+                            path.move(to: CGPoint(x:0, y:60))
+                            path.addLine(to: CGPoint(x:640, y:60))
+                            path.move(to: CGPoint(x:0, y:100))
+                            path.addLine(to: CGPoint(x:640, y:100))
+                            path.move(to: CGPoint(x:0, y:140))
+                            path.addLine(to: CGPoint(x:640, y:140))
+                            path.move(to: CGPoint(x:0, y:180))
+                            path.addLine(to: CGPoint(x:640, y:180))
+                            path.move(to: CGPoint(x:640, y:20))
+                            path.addLine(to: CGPoint(x:640, y:180))
                         }
                         .stroke(Color.black, lineWidth: 2)
-                        .frame(width: 640.0, height: 160.0, alignment: .center)
+                        .frame(width: 640, height: 200.0, alignment: .center)
                     }
                     .background(Color.white)
                 }
@@ -244,10 +252,22 @@ struct MusicEditView: View {
             imageView?.image = image
             
             let nmsPredictions = PrePostProcessor.outputsToNMSPredictions(outputs: outputs, imgScaleX: imgScaleX, imgScaleY: imgScaleY, ivScaleX: ivScaleX, ivScaleY: ivScaleY, startX: startX, startY: startY)
-            let result = PrePostProcessor.showDetection(imageView: imageView!, nmsPredictions: nmsPredictions, classes: inferencer.classes)
+            //let result = PrePostProcessor.showDetection(imageView: imageView!, nmsPredictions: nmsPredictions, classes: inferencer.classes)
             
             print(nmsPredictions)
             //print(inferencer.classes)
+            
+            var result:UIImage = UIImage(named: "trans.png")!
+            //result = result.resized(to: CGSize(width:320, height: 100))
+            
+            for pred in nmsPredictions {
+                var tmpImage = UIImage(named:String(pred.classIndex))
+                tmpImage = tmpImage!.resized(to: CGSize(width: 50, height: 83))
+                let originY = CGFloat(((((Int(pred.rect.maxY) - 20) / 20) * 10) + 10) - 64)
+                let resultRect = CGRect(x:pred.rect.origin.x / 2, y: originY, width: 30, height:60)
+                result = mergeImg(lhs: result, rhs: tmpImage!, rect: resultRect)
+            }
+            
             return Image(uiImage: result)
         }
         print("exception 3")

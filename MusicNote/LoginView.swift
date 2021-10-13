@@ -8,6 +8,7 @@
 import SwiftUI
 import Firebase
 import FirebaseAuth
+import Combine
 
 let lightGreyColor = Color(red: 239.0/255.0, green: 243.0/255.0, blue: 244.0/255.0, opacity: 1.0)
 let storedUsername = "Seni"
@@ -19,16 +20,109 @@ class ViewModel {
     }
 }
 
+class User {
+    var uid: String
+    var email: String?
+    var displayName: String?
+
+    init(uid: String, displayName: String?, email: String?) {
+        self.uid = uid
+        self.email = email
+        self.displayName = displayName
+    }
+
+}
+
+class SessionStore : ObservableObject {
+    var didChange = PassthroughSubject<SessionStore, Never>()
+    var session: User? { didSet { self.didChange.send(self) }}
+    var handle: AuthStateDidChangeListenerHandle?
+
+    func listen () {
+        // monitor authentication changes using firebase
+        handle = Auth.auth().addStateDidChangeListener { (auth, user) in
+            if let user = user {
+                // if we have a user, create a new user model
+                print("Got user: \(user)")
+                self.session = User(
+                    uid: user.uid,
+                    displayName: user.displayName,
+                    email: user.email
+                )
+            } else {
+                // if we don't have a user, set our session to nil
+                self.session = nil
+            }
+        }
+    }
+    
+    func signUp(
+            email: String,
+            password: String,
+            handler: @escaping AuthDataResultCallback
+            ) {
+            Auth.auth().createUser(withEmail: email, password: password, completion: handler)
+        }
+
+        func signIn(
+            email: String,
+            password: String,
+            handler: @escaping AuthDataResultCallback
+            ) {
+            Auth.auth().signIn(withEmail: email, password: password, completion: handler)
+        }
+
+        func signOut () -> Bool {
+            do {
+                try Auth.auth().signOut()
+                self.session = nil
+                return true
+            } catch {
+                return false
+            }
+        }
+    func unbind () {
+            if let handle = handle {
+                Auth.auth().removeStateDidChangeListener(handle)
+            }
+        }
+}
+
 struct LoginView : View {
+    
+    @EnvironmentObject var session: SessionStore
+    
     @State var username: String = ""
     @State var password: String = ""
-    @State var signUpUsername: String = ""
+    @State var signUpEmail: String = ""
     @State var signUpPassword: String = ""
     @State var isPopoverPresented: Bool = false
     @State var authenticationDidFail: Bool = false
     @State var authenticationDidSucceed: Bool = false
     
     @State var action:Int? = nil
+    
+    @State var email: String = ""
+    @State var loading = false
+    @State var error = false
+    
+    func getUser () {
+        session.listen()
+    }
+    
+    func signIn () {
+        loading = true
+        error = false
+        session.signIn(email: email, password: password) { (result, error) in
+            self.loading = false
+                if error != nil {
+                    self.error = true
+                } else {
+                    self.email = ""
+                    self.password = ""
+            }
+        }
+    }
     
     var body: some View {
         NavigationView{
@@ -40,7 +134,7 @@ struct LoginView : View {
                 VStack{
                     WelcomeText()
                     UserImage()
-                    UsernameTextField(username: $username)
+                    EmailTextField(email: $email)
                     PasswordSecureField(password: $password)
                     if authenticationDidFail {
                         Text("Information not correct. Try again.")
@@ -66,7 +160,7 @@ struct LoginView : View {
                     Button(action: {
                         self.isPopoverPresented = true
                     }) {
-                        Text("Show Popover")
+                        SignupButtonContent()
                     }
                     .popover(isPresented: $isPopoverPresented) {
                         VStack{
@@ -74,7 +168,7 @@ struct LoginView : View {
                             Text("SignUp")
                                 .font(.largeTitle)
                             Spacer()
-                            TextField("Username", text: $signUpUsername)
+                            TextField("Username", text: $signUpEmail)
                                 .padding()
                                 .background(lightGreyColor)
                                 .cornerRadius(5.0)
@@ -105,10 +199,11 @@ struct LoginView : View {
             }
         }
         .navigationViewStyle(StackNavigationViewStyle())
+        .onAppear(perform: getUser)
     }
     
     func login(){
-        Auth.auth().signIn(withEmail: self.username, password: self.password)
+        Auth.auth().signIn(withEmail: self.email, password: self.password)
         { (user, error) in
             if user != nil {
                 print("login success")
@@ -125,7 +220,7 @@ struct LoginView : View {
     }
     
     func signUp(){
-        Auth.auth().createUser(withEmail: self.signUpUsername, password: self.signUpPassword)
+        Auth.auth().createUser(withEmail: self.signUpEmail, password: self.signUpPassword)
         { (user, error) in
             if(user != nil){
                 print("register successs")
@@ -140,16 +235,10 @@ struct LoginView : View {
     }
 }
 
-struct LoginView_Previews: PreviewProvider {
-    static var previews: some View {
-        LoginView()
-    }
-}
-
 struct WelcomeText: View {
     var body: some View {
-        Text("Welcome!")
-            .font(.largeTitle)
+        Text("Music Note")
+            .font(Font.custom("Multilingual Hand", size: 40))
             .fontWeight(.semibold)
             .padding(.bottom, 20)
     }
@@ -172,24 +261,37 @@ struct UserImage: View {
 
 struct LoginButtonContent: View {
     var body: some View {
-        Text("LOGIN")
-            .font(.headline)
+        Text("SIGN IN")
+            .font(Font.custom("Multilingual Hand", size: 20))
             .foregroundColor(.white)
             .padding()
             .frame(width: 220, height:60)
-            .background(Color.green)
+            .background(Color.gray)
             .cornerRadius(15.0)
     }
 }
 
-struct UsernameTextField: View {
-    @Binding var username: String
+struct SignupButtonContent: View {
     var body: some View {
-        return TextField("Username", text: $username)
+        Text("SIGN UP")
+            .font(Font.custom("Multilingual Hand", size: 20))
+            .foregroundColor(.white)
+            .padding()
+            .frame(width: 220, height:60)
+            .background(Color.gray)
+            .cornerRadius(15.0)
+    }
+}
+
+struct EmailTextField: View {
+    @Binding var email: String
+    var body: some View {
+        return TextField("Username", text: $email)
             .padding()
             .background(lightGreyColor)
             .cornerRadius(5.0)
             .padding(.bottom, 20)
+            .frame(width:400)
     }
 }
 
@@ -201,5 +303,13 @@ struct PasswordSecureField: View {
             .background(lightGreyColor)
             .cornerRadius(5.0)
             .padding(.bottom, 20)
+            .frame(width:400)
+    }
+}
+
+struct LoginView_Previews: PreviewProvider {
+    static var previews: some View {
+        LoginView()
+            .environmentObject(SessionStore())
     }
 }
