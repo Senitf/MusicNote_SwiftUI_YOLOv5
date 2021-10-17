@@ -14,6 +14,7 @@ struct MusicListView: View {
     @State var MusicBar: Int = 0
     
     @State var action:Int? = nil
+    
     var body: some View {
         NavigationView{
             ZStack{
@@ -31,10 +32,15 @@ struct MusicListView: View {
                             Color.white
                             VStack {
                                 Text("Create New Music")
+                                    .foregroundColor(Color.black)
+                                    .font(Font.custom("Multilingual Hand", size: 20))
+                                Spacer()
                                 HStack{
                                     Text("Title")
+                                        .foregroundColor(Color.black)
+                                        .font(Font.custom("Multilingual Hand", size: 20))
                                     TextField("Input Your Music Title", text: $MusicTitle)
-                                        .padding()
+                                        .padding(.bottom, 5)
                                         .overlay(
                                             Rectangle()
                                             .frame(height: 1)
@@ -42,14 +48,7 @@ struct MusicListView: View {
                                             alignment: .bottom
                                         )
                                 }
-                                HStack{
-                                    Text("How Many bars?")
-                                    Picker(selection: $MusicBar, label: Text("Choose your bars"), content: {
-                                        ForEach(0..<21){
-                                            v in Text(String(format: "%02d", v))
-                                        }
-                                    })
-                                }
+                                Spacer()
                                 HStack{
                                     Spacer()
                                     Button(action: {
@@ -57,6 +56,8 @@ struct MusicListView: View {
                                         print("Close button tapped")
                                     }, label: {
                                         Text("Close")
+                                            .foregroundColor(Color.black)
+                                            .font(Font.custom("Multilingual Hand", size: 20))
                                     })
                                     Spacer()
                                     Button(action: {
@@ -65,12 +66,14 @@ struct MusicListView: View {
                                         print("Create button tapped")
                                     }, label: {
                                         Text("Create")
+                                            .foregroundColor(Color.black)
+                                            .font(Font.custom("Multilingual Hand", size: 20))
                                     })
                                     Spacer()
                                 }
                             }.padding()
                         }
-                        .frame(width: 500, height: 400)
+                        .frame(width: 500, height: 200)
                         .cornerRadius(20).shadow(radius: 20)
                 }
             }.padding()
@@ -89,34 +92,51 @@ struct MusicListView_Previews: PreviewProvider {
 struct NavigationBar: View {
     @Binding var ShowNewMusic: Bool
     var body: some View {
-        Text("Navi Items")
-            .navigationTitle("MusicListView")
-            .navigationBarTitleDisplayMode(.inline)
+        Text("")
+            .navigationBarTitle (Text("Your Notes"), displayMode: .inline)
             .navigationBarItems(trailing:
-                                    HStack{
-                                        Button(action: {
-                                            print("Plus button tapped")
-                                        }) {
-                                            Image(systemName: "plus.square.fill.on.square.fill")
-                                                .imageScale(.medium)
-                                        }
-                                        Button(action: {
-                                            print("New button tapped")
-                                            ShowNewMusic = true
-                                        }) {
-                                            Text("New")
-                                        }
-                                    }
+                HStack{
+                    Button("Profile") {
+
+                    }
+                    .foregroundColor(Color.black)
+                    .font(Font.custom("Multilingual Hand", size: 20))
+                    Button("New") {
+                        ShowNewMusic = true
+                    }
+                    .foregroundColor(Color.black)
+                    .font(Font.custom("Multilingual Hand", size: 20))
+                }
             )
     }
 }
 
 struct MusicList: View {
     var body: some View {
-        List {
-            Text("1")
-            Text("2")
-            Text("3")
-        }.padding()
+        VStack{
+            Text("Sample Score 1")
+                .frame(width: 1200, height: 70.0, alignment: .center)
+                .font(Font.custom("Multilingual Hand", size: 20))
+                .background(Color.white.opacity(0))
+                .padding(20)
+                .overlay(RoundedRectangle(cornerRadius: 20).stroke(Color.white, lineWidth: 4))
+                .shadow(radius: 7)
+                .padding(.bottom, 40)
+            Text("Sample Score 2")
+                .frame(width: 1200, height: 70.0, alignment: .center)
+                .font(Font.custom("Multilingual Hand", size: 20))
+                .background(Color.white.opacity(0))
+                .padding(20)
+                .overlay(RoundedRectangle(cornerRadius: 20).stroke(Color.white, lineWidth: 4))
+                .shadow(radius: 7)
+                .padding(.bottom, 40)
+            Text("Test")
+                .frame(width: 1200, height: 70.0, alignment: .center)
+                .font(Font.custom("Multilingual Hand", size: 20))
+                .background(Color.white.opacity(0))
+                .padding(20)
+                .overlay(RoundedRectangle(cornerRadius: 20).stroke(Color.white, lineWidth: 4))
+                .shadow(radius: 7)
+        }
     }
 }

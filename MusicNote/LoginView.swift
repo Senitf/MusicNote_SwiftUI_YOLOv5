@@ -134,6 +134,7 @@ struct LoginView : View {
                 VStack{
                     WelcomeText()
                     UserImage()
+                        .padding(.bottom, 40)
                     EmailTextField(email: $email)
                     PasswordSecureField(password: $password)
                     if authenticationDidFail {
@@ -252,7 +253,6 @@ struct UserImage: View {
             .frame(width: 150, height: 150)
             .clipped()
             .cornerRadius(150)
-            .padding(.bottom, 75)
             .clipShape(Circle())
             .overlay(Circle().stroke(Color.white, lineWidth: 4))
             .shadow(radius: 7)

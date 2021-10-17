@@ -50,13 +50,15 @@ struct MusicEditView: View {
     @State private var canvasView = PKCanvasView(frame: .init(x:0, y:0, width:400.0, height: 100.0))
     
     @State var outputImage:Image?
-
-    @State var imageList:[UIImage] = [UIImage(named: "trans.png")!, UIImage(named: "trans.png")!, UIImage(named: "trans.png")!, UIImage(named: "trans.png")!]
+    @State var outputUIImage:UIImage?
+    
     //lazy var rootRef = Database.database().reference()
     
     let imgRect = CGRect(x:0, y:0, width:640.0, height:640.0)
     
     var ref: DatabaseReference! = Database.database().reference()
+    
+    
     
     let today = Date()
     var dateFormatter: DateFormatter {
@@ -96,7 +98,7 @@ struct MusicEditView: View {
                         .font(Font.custom("Multilingual Hand", size: 20))
                         Button("New") {
                             MusicBar += 1
-                            self.add()
+                            //self.add()
                         }
                         .foregroundColor(Color.black)
                         .font(Font.custom("Multilingual Hand", size: 20))
@@ -115,8 +117,9 @@ struct MusicEditView: View {
                                 ForEach(0 ..< 4, id: \.self){ j in
                                     ZStack{
                                         /*
-                                        if let uiImage:UIImage = imageList[i * 4 + j]{
-                                            Image(uiImage: uiImage)
+                                        currentBar = 0
+                                        if outputUIImage = self.loadImageFromDocumentDirectory(fileName: "\(MusicTitle)_\(currentBar)"){
+                                            Image(uiImage: outputUIImage)
                                         }
                                          */
                                         Path { path in
@@ -138,6 +141,7 @@ struct MusicEditView: View {
                                         .tag(i * 4 + j)
                                         .onTapGesture {
                                             if showingPopover {
+                                                currentBar = i * 4 + j
                                                 outputImage = self.saveSignature()
                                             }
                                             
@@ -187,8 +191,8 @@ struct MusicEditView: View {
                             .frame(width: 640.0, height: 200.0, alignment: .leading)
                             .background(Color.white.opacity(0))
                             .padding(20)
-                            .overlay(RoundedRectangle(cornerRadius: 20)
-                                        .stroke(Color.black, lineWidth: 2))
+                            .overlay(RoundedRectangle(cornerRadius: 20).stroke(Color.white, lineWidth: 4))
+                            .shadow(radius: 7)
                         Path { path in
                             path.move(to: CGPoint(x:0, y:20))
                             path.addLine(to: CGPoint(x:640, y:20))
@@ -200,8 +204,10 @@ struct MusicEditView: View {
                             path.addLine(to: CGPoint(x:640, y:140))
                             path.move(to: CGPoint(x:0, y:180))
                             path.addLine(to: CGPoint(x:640, y:180))
+                            /*
                             path.move(to: CGPoint(x:640, y:20))
                             path.addLine(to: CGPoint(x:640, y:180))
+                            */
                         }
                         .stroke(Color.black, lineWidth: 2)
                         .frame(width: 640, height: 200.0, alignment: .center)
@@ -211,12 +217,36 @@ struct MusicEditView: View {
             }
     }
     
+    /*
     func add() -> Void {
         // store result string (must be on main queue)
         self.imageList.append(UIImage(named:"trans.png")!)
         self.imageList.append(UIImage(named:"trans.png")!)
         self.imageList.append(UIImage(named:"trans.png")!)
         self.imageList.append(UIImage(named:"trans.png")!)
+    }
+     */
+    
+    public static func saveImageInDocumentDirectory(image: UIImage, fileName: String) -> URL? {
+            
+        let documentsUrl = FileManager.default.urls(for: .documentDirectory, in: .userDomainMask).first!;
+        let fileURL = documentsUrl.appendingPathComponent(fileName)
+        if let imageData = image.pngData() {
+            try? imageData.write(to: fileURL, options: .atomic)
+            return fileURL
+        }
+        return nil
+    }
+    
+    public static func loadImageFromDocumentDirectory(fileName: String) -> UIImage? {
+            
+        let documentsUrl = FileManager.default.urls(for: .documentDirectory, in: .userDomainMask).first!;
+        let fileURL = documentsUrl.appendingPathComponent(fileName)
+        do {
+            let imageData = try Data(contentsOf: fileURL)
+            return UIImage(data: imageData)
+        } catch {}
+        return nil
     }
     
     //PKPencilkit 사용시 그려진 이미지 저장 코드
@@ -287,6 +317,13 @@ struct MusicEditView: View {
         }
         print("exception 3")
         return Image("blank")
+    }
+}
+
+struct MyImage: View{
+    @Binding var myUIImage:UIImage
+    var body: some View{
+        return Image(uiImage: myUIImage)
     }
 }
 
