@@ -45,16 +45,6 @@ extension UIImage {
         }
         var normalizedBuffer: [Float32] = [Float32](repeating: 0, count: w * h * 3)
         for i in 0 ..< w * h {
-            /*
-            normalizedBuffer[i] = abs(Float32(rawBytes[i * 4 + 0]) / 255.0 - 1)
-            normalizedBuffer[w * h + i] = abs(Float32(rawBytes[i * 4 + 1]) / 255.0 - 1)
-            normalizedBuffer[w * h * 2 + i] = abs(Float32(rawBytes[i * 4 + 2]) / 255.0 - 1)
-            */
-            /*
-            normalizedBuffer[i] = abs(Float32(rawBytes[i * 4 + 0]) - 255.0)
-            normalizedBuffer[w * h + i] = abs(Float32(rawBytes[i * 4 + 1]) - 255.0)
-            normalizedBuffer[w * h * 2 + i] = abs(Float32(rawBytes[i * 4 + 2]) - 255.0)
-            */
             r = Float32(rawBytes[i * 4 + 0])
             g = Float32(rawBytes[i * 4 + 1])
             b = Float32(rawBytes[i * 4 + 2])

@@ -15,17 +15,23 @@ struct MusicListView: View {
     
     @State var action:Int? = nil
     
+    @State var title = ["Test1", "Test2", "Demo", "Test Demo", "Hello World", "Bye Bye", "Test Music Note", "Test Test", "Demo", "Test Demo", "Bye Bye", "Test Music Note"]
+    
     var body: some View {
         NavigationView{
             ZStack{
                 NavigationLink(
-                    destination: MusicEditView(MusicTitle: $MusicTitle, MusicBar: $MusicBar),
+                    destination: MusicEditView(MusicTitle: $MusicTitle),
                     tag: 1,
                     selection: $action)
                     {EmptyView()}
                 NavigationBar(ShowNewMusic: $ShowNewMusic)
-                VStack{
-                    MusicList()
+                ScrollView(showsIndicators: false){
+                    VStack{
+                        ForEach(0..<title.count){ i in
+                            MusicList(text: $title[i])
+                        }
+                    }
                 }
                 if ShowNewMusic {
                     ZStack {
@@ -112,31 +118,15 @@ struct NavigationBar: View {
 }
 
 struct MusicList: View {
+    @Binding var text: String
     var body: some View {
-        VStack{
-            Text("Sample Score 1")
-                .frame(width: 1200, height: 70.0, alignment: .center)
-                .font(Font.custom("Multilingual Hand", size: 20))
-                .background(Color.white.opacity(0))
-                .padding(20)
-                .overlay(RoundedRectangle(cornerRadius: 20).stroke(Color.white, lineWidth: 4))
-                .shadow(radius: 7)
-                .padding(.bottom, 40)
-            Text("Sample Score 2")
-                .frame(width: 1200, height: 70.0, alignment: .center)
-                .font(Font.custom("Multilingual Hand", size: 20))
-                .background(Color.white.opacity(0))
-                .padding(20)
-                .overlay(RoundedRectangle(cornerRadius: 20).stroke(Color.white, lineWidth: 4))
-                .shadow(radius: 7)
-                .padding(.bottom, 40)
-            Text("Test")
-                .frame(width: 1200, height: 70.0, alignment: .center)
-                .font(Font.custom("Multilingual Hand", size: 20))
-                .background(Color.white.opacity(0))
-                .padding(20)
-                .overlay(RoundedRectangle(cornerRadius: 20).stroke(Color.white, lineWidth: 4))
-                .shadow(radius: 7)
-        }
+        Text(text)
+            .frame(width: 1200, height: 70.0, alignment: .center)
+            .font(Font.custom("Multilingual Hand", size: 20))
+            .background(Color.white.opacity(0))
+            .padding(20)
+            .overlay(RoundedRectangle(cornerRadius: 20).stroke(Color.white, lineWidth: 4))
+            .shadow(radius: 7)
+            .padding(.bottom, 40)
     }
 }

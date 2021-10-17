@@ -155,14 +155,9 @@ class PrePostProcessor : NSObject {
             
             
             let bboxImage:UIImage? = bbox.asUIImage()
-            //result = result! + bboxImage!
             result = mergeImg(lhs: result!, rhs: bboxImage!, rect: pred.rect)
             
         }
-        /*
-        let bboxImage:UIImage? = imageView.image
-        result = result! + bboxImage!
-        */
         return result!
     }
 

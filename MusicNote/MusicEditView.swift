@@ -16,7 +16,7 @@ import FirebaseDatabase
 class ObjectDetector {
 
     lazy var module: InferenceModule = {
-        if let filePath = Bundle.main.path(forResource: "model640x640", ofType: "pt"),
+        if let filePath = Bundle.main.path(forResource: "YOLOv5_MusicNote", ofType: "pt"),
         //if let filePath = Bundle.main.path(forResource: "model", ofType: "pt"),
             let module = InferenceModule(fileAtPath: filePath) {
             return module
@@ -37,7 +37,7 @@ class ObjectDetector {
 
 struct MusicEditView: View {
     @Binding var MusicTitle:String
-    @Binding var MusicBar:Int
+    @State var MusicBar:Int = 1
     
     //@State var stateMusicBar:Int = $MusicBar
     
@@ -51,14 +51,19 @@ struct MusicEditView: View {
     
     @State var outputImage:Image?
     @State var outputUIImage:UIImage?
+    @State var imageList:[[UIImage]] = [[UIImage(named:"clefgTrans3.png")!, UIImage(named:"trans.png")!, UIImage(named:"trans.png")!, UIImage(named:"trans.png")!]]
+    
+    @State var curI:Int = -1
+    @State var curJ:Int = -1
+    
+    @State var clearMode = false
+    
     
     //lazy var rootRef = Database.database().reference()
     
     let imgRect = CGRect(x:0, y:0, width:640.0, height:640.0)
     
     var ref: DatabaseReference! = Database.database().reference()
-    
-    
     
     let today = Date()
     var dateFormatter: DateFormatter {
@@ -70,8 +75,7 @@ struct MusicEditView: View {
     var body: some View {
             ZStack{
                 VStack{
-                    //메뉴 바 항목들
-                    HStack{
+                    HStack{ //메뉴 바 항목들
                         if currentBar == -1 {
                             Text("Current Bar : Not selected")
                                 .font(Font.custom("Multilingual Hand", size: 20))
@@ -82,7 +86,8 @@ struct MusicEditView: View {
                         }
                         Spacer()
                         Button("Clear") {
-                            canvasView.drawing = PKDrawing()
+                            //canvasView.drawing = PKDrawing()
+                            clearMode.toggle()
                         }
                         .foregroundColor(Color.black)
                         .font(Font.custom("Multilingual Hand", size: 20))
@@ -98,7 +103,7 @@ struct MusicEditView: View {
                         .font(Font.custom("Multilingual Hand", size: 20))
                         Button("New") {
                             MusicBar += 1
-                            //self.add()
+                            self.add()
                         }
                         .foregroundColor(Color.black)
                         .font(Font.custom("Multilingual Hand", size: 20))
@@ -108,20 +113,15 @@ struct MusicEditView: View {
                     .overlay(RoundedRectangle(cornerRadius: 20)
                                 .stroke(Color.black, lineWidth: 1))
                     ScrollView(showsIndicators: false){
-                        //악보 타이틀
-                        Text(MusicTitle)
+                        Text(MusicTitle) //악보 타이틀
                             .font(Font.custom("Multilingual Hand", size: 32))
                             .padding(20)
                         ForEach(0 ..< MusicBar, id: \.self){ i in
                             HStack{
-                                ForEach(0 ..< 4, id: \.self){ j in
+                                ForEach(0..<4, id: \.self){ j in
                                     ZStack{
-                                        /*
-                                        currentBar = 0
-                                        if outputUIImage = self.loadImageFromDocumentDirectory(fileName: "\(MusicTitle)_\(currentBar)"){
-                                            Image(uiImage: outputUIImage)
-                                        }
-                                         */
+                                        Image(uiImage: imageList[i][j])
+                                            .frame(width: 320.0, height: 100.0, alignment: .center)
                                         Path { path in
                                             path.move(to: CGPoint(x:0, y:10))
                                             path.addLine(to: CGPoint(x:320, y:10))
@@ -138,35 +138,37 @@ struct MusicEditView: View {
                                         }
                                         .stroke(Color.black, lineWidth: 2)
                                         .frame(width: 320.0, height: 100.0, alignment: .center)
-                                        .tag(i * 4 + j)
                                         .onTapGesture {
-                                            if showingPopover {
-                                                currentBar = i * 4 + j
-                                                outputImage = self.saveSignature()
+                                            curI = i
+                                            curJ = j
+                                            if clearMode {
+                                                if curJ == 0 {
+                                                    imageList[curI][curJ] = UIImage(named: "clefgTrans3.png")!
+                                                }
+                                                else {
+                                                    imageList[curI][curJ] = UIImage(named: "trans.png")!
+                                                }
                                             }
-                                            
-                                            else {
-                                                currentBar = i * 4 + j
-                                                outputImage = nil
-                                                canvasView.drawing = PKDrawing()
+                                            else{
+                                                if showingPopover {
+                                                    currentBar = i * 4 + j
+                                                    imageList[curI][curJ] = self.saveSignature()
+                                                }
+                                                
+                                                else {
+                                                    currentBar = i * 4 + j
+                                                    outputImage = nil
+                                                    canvasView.drawing = PKDrawing()
+                                                }
+                                                showingPopover.toggle()
                                             }
-                                            showingPopover.toggle()
                                         }
                                     }
-
+                                    .frame(width: 320.0, height: 100.0)
                                     .padding(.leading, -75)
-                                    /*
-                                    .padding(.bottom, 10)
-                                     */
                                 }
                             }
                         }
-                        /*
-                        outputImage?
-                            .resizable()
-                            .border(Color.gray, width:5)
-                            .frame(width: 640, height: 640, alignment: .center)
-                        */
                         Spacer()
                     }
                 }
@@ -181,7 +183,7 @@ struct MusicEditView: View {
                 .contentShape(Rectangle())
                 .onTapGesture {
                     if showingPopover {
-                        outputImage = self.saveSignature()
+                        imageList[curI][curJ] = self.saveSignature()
                         showingPopover.toggle()
                     }
                 }
@@ -217,15 +219,11 @@ struct MusicEditView: View {
             }
     }
     
-    /*
+
     func add() -> Void {
         // store result string (must be on main queue)
-        self.imageList.append(UIImage(named:"trans.png")!)
-        self.imageList.append(UIImage(named:"trans.png")!)
-        self.imageList.append(UIImage(named:"trans.png")!)
-        self.imageList.append(UIImage(named:"trans.png")!)
+        self.imageList.append([UIImage(named:"clefgTrans3.png")!, UIImage(named:"trans.png")!, UIImage(named:"trans.png")!, UIImage(named:"trans.png")!])
     }
-     */
     
     public static func saveImageInDocumentDirectory(image: UIImage, fileName: String) -> URL? {
             
@@ -256,7 +254,7 @@ struct MusicEditView: View {
         return documentsDirectory
     }
     
-    func saveSignature() -> Image{
+    func saveSignature() -> UIImage{
         let inferencer = ObjectDetector()
         let image = canvasView.drawing.image(from: imgRect, scale: 1.0)
         var imageView:UIImageView?
@@ -267,7 +265,6 @@ struct MusicEditView: View {
             imageView = UIImageView(image: tmpUIImage)
         }
         
-        
         let imgScaleX = Double(image.size.width / CGFloat(PrePostProcessor.inputWidth))
         let imgScaleY = Double(image.size.height / CGFloat(PrePostProcessor.inputHeight))
         let ivScaleX : Double = (image.size.width > image.size.height ? Double(640.0 / image.size.width) : Double(640.0 / image.size.height))
@@ -276,35 +273,26 @@ struct MusicEditView: View {
         let startY = Double((640.0 -  CGFloat(ivScaleY) * image.size.height)/2)
         
         if let data = image.pngData(){
-        //if let data = image.pngData() {
-            
             let filename = getDocumentsDirectory().appendingPathComponent("\(self.dateFormatter.string(from: self.today)).png")
             try? data.write(to: filename)
-            /*
-            let resizedImage = image.resized(to: CGSize(width: 640, height: 640))
-            print(filename)
-             */
             guard var pixelBuffer:[Float32] = image.normalized() else {
                 print("exception 1")
-                return Image("blank")
+                return UIImage(named: "blank.png")!
             }
 
             guard let outputs = inferencer.module.detect(image: &pixelBuffer) else {
                 print("exception 2")
-                return Image("blank")
+                return UIImage(named: "blank.png")!
             }
             
             imageView?.image = image
             
-            let nmsPredictions = PrePostProcessor.outputsToNMSPredictions(outputs: outputs, imgScaleX: imgScaleX, imgScaleY: imgScaleY, ivScaleX: ivScaleX, ivScaleY: ivScaleY, startX: startX, startY: startY)
-            //let result = PrePostProcessor.showDetection(imageView: imageView!, nmsPredictions: nmsPredictions, classes: inferencer.classes)
-            
+            let nmsPredictions = PrePostProcessor.outputsToNMSPredictions(
+                outputs: outputs, imgScaleX: imgScaleX, imgScaleY: imgScaleY, ivScaleX: ivScaleX, ivScaleY: ivScaleY, startX: startX, startY: startY
+            )
             print(nmsPredictions)
-            //print(inferencer.classes)
-            
-            var result:UIImage = UIImage(named: "trans.png")!
-            //result = result.resized(to: CGSize(width:320, height: 100))
-            
+            var result:UIImage = imageList[curI][curJ]
+
             for pred in nmsPredictions {
                 var tmpImage = UIImage(named:String(pred.classIndex))
                 tmpImage = tmpImage!.resized(to: CGSize(width: 50, height: 83))
@@ -312,36 +300,67 @@ struct MusicEditView: View {
                 let resultRect = CGRect(x:pred.rect.origin.x / 2, y: originY, width: 30, height:60)
                 result = mergeImg(lhs: result, rhs: tmpImage!, rect: resultRect)
             }
-            
-            return Image(uiImage: result)
+            //return Image(uiImage: result)
+            return result
         }
         print("exception 3")
-        return Image("blank")
+        return UIImage(named: "blank.png")!
     }
-}
+    
+    func createPdf() {
+        let outputFileURL = FileManager.default.urls(for: .documentDirectory, in: .userDomainMask).first!.appendingPathComponent("yourFileName.pdf")
+        let title = "Your Title\n"
+        let text = String(repeating: "Your string row from List View or ScrollView \n ", count: 2000)
 
-struct MyImage: View{
-    @Binding var myUIImage:UIImage
-    var body: some View{
-        return Image(uiImage: myUIImage)
-    }
-}
+        let titleAttributes = [NSAttributedString.Key.font: UIFont.boldSystemFont(ofSize: 36)]
+        let textAttributes = [NSAttributedString.Key.font: UIFont.systemFont(ofSize: 12)]
 
-struct TagView: UIViewRepresentable {
-    let tag: Int
+        let formattedTitle = NSMutableAttributedString(string: title, attributes: titleAttributes)
+        let formattedText = NSAttributedString(string: text, attributes: textAttributes)
+        formattedTitle.append(formattedText)
 
-    func makeUIView(context: Context) -> UIView {
-        let mainView = UIView()
-        let uiImageView = UIImageView()
-        let uiImage = UIImage(named: "trans.png")
-        uiImageView.image = uiImage
-        mainView.addSubview(uiImageView)
-        mainView.tag = tag
-        return mainView
-    }
+        // 1. Create Print Formatter with your text.
 
-    func updateUIView(_ uiView: UIView, context: Context) {
-        uiView.tag = tag
+        let formatter = UISimpleTextPrintFormatter(attributedText: formattedTitle)
+
+        // 2. Add formatter with pageRender
+
+        let render = UIPrintPageRenderer()
+        render.addPrintFormatter(formatter, startingAtPageAt: 0)
+
+        // 3. Assign paperRect and printableRect
+
+        let page = CGRect(x: 0, y: 0, width: 595.2, height: 841.8) // A4, 72 dpi
+        let printable = page.insetBy(dx: 0, dy: 0)
+
+        render.setValue(NSValue(cgRect: page), forKey: "paperRect")
+        render.setValue(NSValue(cgRect: printable), forKey: "printableRect")
+
+        // 4. Create PDF context and draw
+        let rect = CGRect.zero
+
+        let pdfData = NSMutableData()
+        UIGraphicsBeginPDFContextToData(pdfData, rect, nil)
+
+        for i in 1...render.numberOfPages {
+
+            UIGraphicsBeginPDFPage();
+            let bounds = UIGraphicsGetPDFContextBounds()
+            render.drawPage(at: i - 1, in: bounds)
+        }
+
+        UIGraphicsEndPDFContext();
+
+        // 5. Save PDF file
+
+        do {
+            try pdfData.write(to: outputFileURL, options: .atomic)
+
+            print("wrote PDF file with multiple pages to: \(outputFileURL.path)")
+        } catch {
+
+             print("Could not create PDF file: \(error.localizedDescription)")
+        }
     }
 }
 
@@ -361,6 +380,6 @@ struct MyCanvas: UIViewRepresentable {
 //Preview
 struct MusicEditView_Previews: PreviewProvider {
     static var previews: some View {
-        MusicEditView(MusicTitle: .constant("Sample Music Title"), MusicBar: .constant(1))
+        MusicEditView(MusicTitle: .constant("Sample Music Title"))
     }
 }
