@@ -50,7 +50,8 @@ struct MusicEditView: View {
     @State private var canvasView = PKCanvasView(frame: .init(x:0, y:0, width:400.0, height: 100.0))
     
     @State var outputImage:Image?
-    
+
+    @State var imageList:[UIImage] = [UIImage(named: "trans.png")!, UIImage(named: "trans.png")!, UIImage(named: "trans.png")!, UIImage(named: "trans.png")!]
     //lazy var rootRef = Database.database().reference()
     
     let imgRect = CGRect(x:0, y:0, width:640.0, height:640.0)
@@ -95,6 +96,7 @@ struct MusicEditView: View {
                         .font(Font.custom("Multilingual Hand", size: 20))
                         Button("New") {
                             MusicBar += 1
+                            self.add()
                         }
                         .foregroundColor(Color.black)
                         .font(Font.custom("Multilingual Hand", size: 20))
@@ -112,8 +114,11 @@ struct MusicEditView: View {
                             HStack{
                                 ForEach(0 ..< 4, id: \.self){ j in
                                     ZStack{
-                                        outputImage?
-                                            .frame(width: 320.0, height: 100.0, alignment: .center)
+                                        /*
+                                        if let uiImage:UIImage = imageList[i * 4 + j]{
+                                            Image(uiImage: uiImage)
+                                        }
+                                         */
                                         Path { path in
                                             path.move(to: CGPoint(x:0, y:10))
                                             path.addLine(to: CGPoint(x:320, y:10))
@@ -144,8 +149,9 @@ struct MusicEditView: View {
                                             showingPopover.toggle()
                                         }
                                     }
+
+                                    .padding(.leading, -75)
                                     /*
-                                    .padding(.leading, -77)
                                     .padding(.bottom, 10)
                                      */
                                 }
@@ -204,6 +210,15 @@ struct MusicEditView: View {
                 }
             }
     }
+    
+    func add() -> Void {
+        // store result string (must be on main queue)
+        self.imageList.append(UIImage(named:"trans.png")!)
+        self.imageList.append(UIImage(named:"trans.png")!)
+        self.imageList.append(UIImage(named:"trans.png")!)
+        self.imageList.append(UIImage(named:"trans.png")!)
+    }
+    
     //PKPencilkit 사용시 그려진 이미지 저장 코드
     func getDocumentsDirectory() -> URL {
         let paths = FileManager.default.urls(for: .documentDirectory, in: .userDomainMask)
@@ -275,6 +290,24 @@ struct MusicEditView: View {
     }
 }
 
+struct TagView: UIViewRepresentable {
+    let tag: Int
+
+    func makeUIView(context: Context) -> UIView {
+        let mainView = UIView()
+        let uiImageView = UIImageView()
+        let uiImage = UIImage(named: "trans.png")
+        uiImageView.image = uiImage
+        mainView.addSubview(uiImageView)
+        mainView.tag = tag
+        return mainView
+    }
+
+    func updateUIView(_ uiView: UIView, context: Context) {
+        uiView.tag = tag
+    }
+}
+
 //PencilKit 사용시 UIKit 연동 코드
 struct MyCanvas: UIViewRepresentable {
     @Binding var canvasView: PKCanvasView
@@ -291,6 +324,6 @@ struct MyCanvas: UIViewRepresentable {
 //Preview
 struct MusicEditView_Previews: PreviewProvider {
     static var previews: some View {
-        MusicEditView(MusicTitle: .constant("Sample Music Title"), MusicBar: .constant(2))
+        MusicEditView(MusicTitle: .constant("Sample Music Title"), MusicBar: .constant(1))
     }
 }
