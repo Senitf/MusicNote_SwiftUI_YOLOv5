@@ -9,6 +9,7 @@
 /* Begin PBXBuildFile section */
 		8FE2E2BF4A6623182BB5BC85 /* Pods_MusicNote.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 1DC59726B6F2188736268DF2 /* Pods_MusicNote.framework */; };
 		A2203845270A9DA00026C30F /* model640x640.pt in Resources */ = {isa = PBXBuildFile; fileRef = A2203844270A9DA00026C30F /* model640x640.pt */; };
+		A2240FBD273962F20009E120 /* ViewExtension.swift in Sources */ = {isa = PBXBuildFile; fileRef = A2240FBC273962F20009E120 /* ViewExtension.swift */; };
 		A226189D2714197F00092F5F /* hand.ttf in Resources */ = {isa = PBXBuildFile; fileRef = A226189C2714197F00092F5F /* hand.ttf */; };
 		A2284840271BD96A003F9FD4 /* URLExtension.swift in Sources */ = {isa = PBXBuildFile; fileRef = A228483F271BD96A003F9FD4 /* URLExtension.swift */; };
 		A2284842271C473F003F9FD4 /* YOLOv5_MusicNote.pt in Resources */ = {isa = PBXBuildFile; fileRef = A2284841271C473F003F9FD4 /* YOLOv5_MusicNote.pt */; };
@@ -33,6 +34,7 @@
 		1DC59726B6F2188736268DF2 /* Pods_MusicNote.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_MusicNote.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		282499E1F0E5C62AF55D80F4 /* Pods-MusicNote.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-MusicNote.debug.xcconfig"; path = "Target Support Files/Pods-MusicNote/Pods-MusicNote.debug.xcconfig"; sourceTree = "<group>"; };
 		A2203844270A9DA00026C30F /* model640x640.pt */ = {isa = PBXFileReference; lastKnownFileType = file; path = model640x640.pt; sourceTree = "<group>"; };
+		A2240FBC273962F20009E120 /* ViewExtension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ViewExtension.swift; sourceTree = "<group>"; };
 		A226189C2714197F00092F5F /* hand.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; path = hand.ttf; sourceTree = "<group>"; };
 		A228483F271BD96A003F9FD4 /* URLExtension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = URLExtension.swift; sourceTree = "<group>"; };
 		A2284841271C473F003F9FD4 /* YOLOv5_MusicNote.pt */ = {isa = PBXFileReference; lastKnownFileType = file; path = YOLOv5_MusicNote.pt; sourceTree = "<group>"; };
@@ -103,6 +105,7 @@
 				A279A3AA270D0E3F003BAD3E /* UIViewExtension.swift */,
 				A2640F092712F657003F2DDE /* SwiftyImage.swift */,
 				A228483F271BD96A003F9FD4 /* URLExtension.swift */,
+				A2240FBC273962F20009E120 /* ViewExtension.swift */,
 			);
 			path = util;
 			sourceTree = "<group>";
@@ -192,6 +195,8 @@
 			dependencies = (
 			);
 			name = MusicNote;
+			packageProductDependencies = (
+			);
 			productName = MusicNote;
 			productReference = A28EF43A270077D6005E75AE /* MusicNote.app */;
 			productType = "com.apple.product-type.application";
@@ -221,6 +226,8 @@
 				Base,
 			);
 			mainGroup = A28EF431270077D6005E75AE;
+			packageReferences = (
+			);
 			productRefGroup = A28EF43B270077D6005E75AE /* Products */;
 			projectDirPath = "";
 			projectRoot = "";
@@ -306,6 +313,7 @@
 				A279A3AB270D0E3F003BAD3E /* UIViewExtension.swift in Sources */,
 				A28D061327074BDA00B0D668 /* InferenceModule.mm in Sources */,
 				A279A3A9270D0DE5003BAD3E /* UIImageExtension.swift in Sources */,
+				A2240FBD273962F20009E120 /* ViewExtension.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
